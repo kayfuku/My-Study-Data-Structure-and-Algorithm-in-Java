@@ -8,6 +8,7 @@
  */
 public boolean dfs(Graph g, Vertex start, Vertex goal) {
     Set<Vertex> visited = new HashSet<Vertex>();
+    // Note that this is type LinkedList, not List in order to use push() and poll(). 
     LinkedList<Vertex> stack = new LinkedList<Vertex>();
 
     // Add node to the head.

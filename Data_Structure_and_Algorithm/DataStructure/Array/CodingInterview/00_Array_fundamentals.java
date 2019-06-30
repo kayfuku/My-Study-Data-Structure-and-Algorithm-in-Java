@@ -85,7 +85,7 @@ public boolean arrayFront9(int[] nums) {
   return false;
 }
 
-// // Bad
+// // Not so good. 
 // public boolean arrayFront9(int[] nums) {
 //   for (int i = 0; i < nums.length; i++) {
 //     if (i < 4 && nums[i] == 9) {
@@ -128,8 +128,8 @@ public boolean array123(int[] nums) {
 for (int i = 0; i < seq.size(); i++) {
   ...
 
-  int onesSeqRight = i - 1 >= 0 ? seq.get(i - 1) : 0;
-  int onesSeqLeft = i + 1 < seq.size() ? seq.get(i + 1) : 0;
+  int onesSeqRight = (i - 1 >= 0) ? seq.get(i - 1) : 0;
+  int onesSeqLeft = (i + 1 < seq.size()) ? seq.get(i + 1) : 0;
 
   ...
 }
@@ -139,6 +139,26 @@ for (int i = 0; i < seq.size(); i++) {
 // Author: a topcoder.
 // Date  : October 26, 2016
 int[] copy = Arrays.copyOf(a, a.length);
+// Author: kei
+// Date  : February 15, 2019
+int[] arr1 = new int[]{ 1, 2, 3, 4 };
+int[] arr2 = new int[7];
+System.arraycopy(arr1, 0, arr2, 0, arr1.length);
+System.out.println(Arrays.toString(arr2)); // [1, 2, 3, 4, 0, 0, 0]
+
+int[] arr3 = new int[]{ 2, 2, 2 };
+Arrays.fill(arr2, 0);
+System.out.println(Arrays.toString(arr2)); // [0, 0, 0, 0, 0, 0, 0]
+System.arraycopy(arr3, 0, arr2, 1, arr3.length);
+System.out.println(Arrays.toString(arr2)); // [0, 2, 2, 2, 0, 0, 0]
+Arrays.fill(arr2, 0);
+System.out.println(Arrays.toString(arr2)); // [0, 0, 0, 0, 0, 0, 0]
+System.arraycopy(arr3, 0, arr2, 4, arr3.length);
+System.out.println(Arrays.toString(arr2)); // [0, 0, 0, 0, 2, 2, 2]
+Arrays.fill(arr2, 0);
+System.out.println(Arrays.toString(arr2)); // [0, 0, 0, 0, 0, 0, 0]
+System.arraycopy(arr3, 0, arr2, 5, arr3.length);
+System.out.println(Arrays.toString(arr2)); // ArrayIndexOutOfBoundsException
 
 
 // Sort array a. 
@@ -149,15 +169,15 @@ Arrays.sort(a);
 
 // Author: someone in Qiita + kei
 // Date  : October 26, 2016
-Integer[] array = {5,3,1,2,4};
+Integer[] array = { 5, 3, 1, 2, 4 };
 List<Integer> list = Arrays.asList(array);
 
 Arrays.sort(array);                                   //ソート
 Arrays.sort(array, Comparator.reverseOrder());        //降順になる
-Arrays.sort(array, (x,y)->Integer.compare(y, x));     //コンパレータを渡してソート
+Arrays.sort(array, (x, y) -> Integer.compare(y, x));     //コンパレータを渡してソート
 Collections.sort(list);                               //ソート
 Collections.sort(list, Collections.reverseOrder());   //逆順にソート
-Collections.sort(list, (x,y)->Integer.compare(y, x)); //コンパレータを渡してソート
+Collections.sort(list, (x, y) -> Integer.compare(y, x)); //コンパレータを渡してソート
 list.sort(Collections.reverseOrder());                //逆順にソート
 
 Arrays.binarySearch(array, 3);     //二分探索
@@ -181,7 +201,7 @@ list.hashCode();        //リストのハッシュを返す
 // Array to List using Arrays.asList(). 
 // Author: kei 
 // Date  : October 30, 2016
-String[] arrayStrings = {"a", "b", "c"};
+String[] arrayStrings = { "a", "b", "c" };
 // O(1)
 ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(arrayStrings));
 //System.out.println(arrayList.toString()); // [a, b, c]
@@ -189,7 +209,7 @@ ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(arrayStrings))
 ArrayList<Integer> arrayList2 = new ArrayList<Integer>(Arrays.asList(1, 2, 4));
 //System.out.println(arrayList2.toString()); // [1, 2, 4]
 
-int[] ints = new int[]{1, 2, 4};
+int[] ints = new int[]{ 1, 2, 4 };
 ArrayList<Integer> arrayList3 = new ArrayList<Integer>(Arrays.asList(1, 2, 4));
 //System.out.println(arrayList3.toString()); // [1, 2, 4]
 
@@ -235,7 +255,16 @@ Deque<Integer> deque = new ArrayDeque<>(Arrays.asList(ints));
 System.out.println(deque.pollLast()); // 6 
 
 
-
+// Arrays.copyOf()
+// Author: kei 
+// Date  : June 24, 2019
+int[] nums1 = new int[]{ 2, 1, 2, 3 };
+int[] ret = Arrays.copyOf(nums1, 2);
+System.out.println(Arrays.toString(ret)); // [2, 1]
+ret = Arrays.copyOf(nums1, 6);
+System.out.println(Arrays.toString(ret)); // [2, 1, 2, 3, 0, 0]
+ret = Arrays.copyOf(nums1, 0);
+System.out.println(Arrays.toString(ret)); // []
 
 
 

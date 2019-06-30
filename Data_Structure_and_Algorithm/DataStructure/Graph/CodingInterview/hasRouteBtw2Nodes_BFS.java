@@ -1,7 +1,5 @@
 // Find whether there is a route between 2 nodes in a directed graph
 // using BFS. 
-// Author: kei
-// Date  : December 8, 2016
 
 package whiteboard;
 
@@ -9,13 +7,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-
-
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
 
-        
         // Build a graph.
         //          b  −−→  d
         //        ↗︎↑↘   ↙︎  ↘︎
@@ -29,34 +24,38 @@ public class Lab_whiteboard {
         System.out.println(b); // true 
         
         
+
         System.out.println();
         System.out.println("done.");
         return;
     } // end main().
     
-
+    
+    // Author: kei
+    // Date  : December 8, 2016, December 31, 2018
     public static boolean hasRouteBtw(GraphAdjList g, Vertex2 start, Vertex2 goal) {
         LinkedList<Vertex2> queue = new LinkedList<>();
         HashSet<Vertex2> visited = new HashSet<>();
-        
+
         queue.add(start);
         while (!queue.isEmpty()) {
             Vertex2 currNode = queue.poll();
+            System.out.println(currNode);
             if (currNode.equals(goal)) {
                 return true;
             }
-            visited.add(currNode);
-            
+
             ArrayList<Vertex2> adjNodes = g.getAdjVertices(currNode);
             if (adjNodes != null) {
                 for (Vertex2 node : adjNodes) {
                     if (!visited.contains(node)) {
+                        visited.add(node);
                         queue.add(node);
                     }
                 }
             }
         }
-        
+
         return false;
     }
     

@@ -62,7 +62,7 @@ public class Lab_whiteboard {
         
         while (iter.hasNext()) {
             // Note that once you call iter.next(), then 
-            // the cursor returns the element and move to the next. 
+            // the cursor moves to the next and returns the element. 
             // So you should assign the return value to the variable. 
             String nextString = iter.next();
             int len = nextString.length();

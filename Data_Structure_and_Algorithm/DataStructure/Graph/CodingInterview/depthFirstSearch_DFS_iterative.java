@@ -1,3 +1,4 @@
+// This dfs code becomes bfs code if you replace the stack with a queue.
 // Depth First Search(DFS) iterative version.
 // Author: アルゴリズムを学ぼう p.96 + kei
 // Date  : September 22, 2016

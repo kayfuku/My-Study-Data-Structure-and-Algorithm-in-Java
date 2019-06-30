@@ -30,6 +30,9 @@ public class ForCopy {
         System.out.println(checkExactlyOneBitSet(b)); // true 
         
         
+        // XOR cancels out the duplicates. 
+        int[] nums = new int[]{ 15, 12, 15, 5, 5 };
+        System.out.println(cancelDups(nums)); // 12
         
         
         
@@ -62,7 +65,17 @@ public class ForCopy {
         return (bitVector & (bitVector - 1)) == 0;
     }
 
-    
+    // XOR cancels out duplicates. 
+    // Author: kei + LeetCode
+    // Data  : June 11, 2019
+    // O(N) time, O(1) space. 
+    private static int cancelDups(int[] nums) {
+        int ans = 0;
+        for (int n : nums) {
+            ans ^= n;
+        }
+        return ans;
+    }
 
 
 

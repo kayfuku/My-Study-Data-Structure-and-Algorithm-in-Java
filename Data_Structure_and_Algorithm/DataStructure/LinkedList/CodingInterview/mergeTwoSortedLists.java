@@ -38,7 +38,8 @@ public class Lab_whiteboard {
         // It should be good to use alternate pointer. 
         SLLNode<Integer> p1 = list1, p2 = list2;
         
-        while (p1 != null && p2 != null /* Until either pointer reaches end. */ ) {
+        // Until either pointer reaches end. 
+        while (p1 != null && p2 != null) {
             if (p1.data <= p2.data) {
                 current.next = p1;
                 p1 = p1.next;

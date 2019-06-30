@@ -109,8 +109,9 @@ public class Lab_whiteboard {
         convertTreeToArrayList(tNode.left, nodeArrayList);
         convertTreeToArrayList(tNode.right, nodeArrayList);
     }
+
     
-    // Convert Binary Tree to ArrayList<TreeNode>. O(N)
+    // Convert Binary Tree to ArrayList<TreeNode>. BFS. O(N)
     // Author: PIE p.77 + kei
     // Date  : November 1, 2016
     public static ArrayList<SimpleTreeNode> convertTreeToArrayListBFS(SimpleTreeNode tNode) {
@@ -141,15 +142,13 @@ public class Lab_whiteboard {
     // Convert ArrayList<TreeNode> to Complete Binary Tree. O(N)
     // Author: PIE p.77 + kei
     // Date  : November 1, 2016
-    public static SimpleTreeNode convertArrayListToBinaryTree(
-                                          ArrayList<SimpleTreeNode> nodeArrayList) {
+    public static SimpleTreeNode convertArrayListToBinaryTree(ArrayList<SimpleTreeNode> nodeArrayList) {
         if (nodeArrayList == null) { return null; }
+        convertArrayListToBinaryTree2(nodeArrayList);
         SimpleTreeNode tNode = nodeArrayList.get(0);
-        convertArrayListToBinaryTree(nodeArrayList, tNode);
         return tNode;
     }
-    private static void convertArrayListToBinaryTree(ArrayList<SimpleTreeNode> nodeArrayList, 
-                                                     SimpleTreeNode tNode) {        
+    private static void convertArrayListToBinaryTree2(ArrayList<SimpleTreeNode> nodeArrayList) {        
         int len = nodeArrayList.size();
         for (int i = 0; i < len; i++) { 
             int left = 2 * i + 1;

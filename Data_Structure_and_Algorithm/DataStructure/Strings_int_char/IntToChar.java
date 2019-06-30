@@ -68,7 +68,15 @@ n = Character.getNumericValue(c);
 System.out.println(n);  // 10
 
 
-
+// char, int, and String. 
+char c1 = 'T';
+char c2 = 'T';
+String retString1 = "" + c1 + c2;
+System.out.println(retString1); // TT
+String retString2 = c1 + c2 + "";
+System.out.println(retString2); // 168
+String retString3 = "" + (c1 + c2);
+System.out.println(retString3); // 168
 
 
 

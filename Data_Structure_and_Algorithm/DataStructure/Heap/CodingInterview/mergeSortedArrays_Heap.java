@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 
-
-
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
@@ -23,6 +21,7 @@ public class Lab_whiteboard {
         List<Integer> list1 = new ArrayList<Integer>(Arrays.asList(nums1));
         List<Integer> list2 = new ArrayList<Integer>(Arrays.asList(nums2));
         List<Integer> list3 = new ArrayList<Integer>(Arrays.asList(nums3));
+
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         lists.add(list1);
         lists.add(list2);
@@ -31,10 +30,6 @@ public class Lab_whiteboard {
         // Test mergeSortedArrays(). 
         List<Integer> result = mergeSortedArrays(lists);
         System.out.println(result.toString()); // [0, 0, 3, 5, 6, 6, 7, 28]
-        
-        
-        
-        
         
         
         
@@ -72,7 +67,9 @@ public class Lab_whiteboard {
         List<Integer> result = new ArrayList<>(); 
         ArrayEntry headEntry;
         while ((headEntry = minHeap.poll()) != null) {
+
             result.add(headEntry.value);
+            
             // Get the pointer. 
             int p = pointers.get(headEntry.arrayId);
             List<Integer> smallestArray = sortedArrays.get(headEntry.arrayId);
@@ -88,14 +85,8 @@ public class Lab_whiteboard {
     }
     
     
-    
-
-    
-    
-    
-    
-    
 }
+
 
 class ArrayEntry {
     public Integer value;
@@ -106,6 +97,22 @@ class ArrayEntry {
         this.arrayId = arrayId;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

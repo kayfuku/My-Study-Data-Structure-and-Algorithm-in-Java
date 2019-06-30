@@ -5,13 +5,10 @@
 
 package whiteboard;
 
-
-
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
 
-        
         SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
         list.add(1);
         list.add(3);
@@ -32,10 +29,6 @@ public class Lab_whiteboard {
         SLLNode<Integer> node5 = getKthToLast(list.head, 7);
         System.out.println(node5.data); // NullPointerException.  
 
-        
-        
-            
-        
         
         
         
@@ -66,10 +59,23 @@ public class Lab_whiteboard {
             n2 = n2.next;
         }
         // Do not forget this!
+        // The pointer must move k - 1 times to the next node. 
         if (n2 == null) {
             return null;
         }
-        
+        // Alternative code?
+        // int i = 0;
+        // while (n2 != null && i < k - 1) {
+        //    n2 = n2.next;
+        //    i++;
+        // }
+        // if (n2 == null) {
+        //   return null;
+        // }
+
+        // At this point, It is garanteed that n2 refers to the k - 1 farther node
+        // from n1. 
+        // Move n1 and n2 at the same pace until n2 gets to the last node. 
         // Not 'n2 != null' 
         // because n1 should immediately stop as soon as n2 gets 
         // to the end node. 

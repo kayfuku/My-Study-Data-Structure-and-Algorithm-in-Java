@@ -8,20 +8,13 @@ package whiteboard;
 import java.util.HashSet;
 
 
-
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
 
-        
         int[] array = new int[]{ 2, 5, 3, 6, -3, 0, 1 };
         int target = 5;
         System.out.println(findSumElements(array, target)); // 3
-        
-        
-        
-        
-        
         
         
         System.out.println();
@@ -30,7 +23,6 @@ public class Lab_whiteboard {
     } // end main().
     
     
-
     // O(N) time, O(N) space. 
     public static int findSumElements(int[] array, int target) {
         HashSet<Integer> visited = new HashSet<>();

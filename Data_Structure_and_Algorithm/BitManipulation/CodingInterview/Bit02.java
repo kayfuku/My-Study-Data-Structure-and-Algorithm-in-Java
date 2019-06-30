@@ -41,7 +41,7 @@ public static int updateBits(int n, int m, int i, int j) {
     
     // Clear j-th through i-th. 
     // ex. n       : 10101101
-    //     mask    : 11100011
+    //   & mask    : 11100011
     //     nCleared: 10100001
     int nCleared = n & mask; 
             

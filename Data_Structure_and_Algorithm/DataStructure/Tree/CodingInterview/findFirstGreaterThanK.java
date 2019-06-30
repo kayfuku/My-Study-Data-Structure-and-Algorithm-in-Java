@@ -1,6 +1,6 @@
 // Find the first key greater than a given value in a BST. 
 // Essentially, it is the same problem as finding key in BST. 
-// Author: CtCI 15.2 p.238 + kei 
+// Author: EPI 15.2 p.238 + kei 
 // Date  : January 29, 2017 
 
 package whiteboard;
@@ -73,7 +73,7 @@ public class Lab_whiteboard {
     
     // Find the first key greater than a given value in a BST. 
     // Essentially, it is the same problem as finding key in BST. 
-    // Author: CtCI 15.2 p.238 + kei 
+    // Author: EPI 15.2 p.238 + kei 
     // Date  : January 29, 2017 
     public static Integer findFirstGreaterThanK(SimpleTreeNode node, int k) {
         

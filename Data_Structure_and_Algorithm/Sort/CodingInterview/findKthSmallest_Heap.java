@@ -8,21 +8,25 @@ public int kthSmallestViaHeap(int[] arr, int k) {
         throw new IllegalArgumentException();
     }
     // Create a max heap whose size is k.
-    PriorityQueue<Integer> smallestK = 
+    PriorityQueue<Integer> maxHeap = 
             new PriorityQueue<Integer>(k, Collections.reverseOrder());
-    // Add array elements to the heap until it's full. 
+
+    // Fill the heap by adding array elements. 
     for (int i = 0; i < Math.min(arr.length, k); i++) {
-        smallestK.add(arr[i]);
+        maxHeap.add(arr[i]);
     }
     // Traverse the array and just keep k smallest elements in the heap.
     for (int i = k; i < arr.length; i++) {
-        if (arr[i] < smallestK.peek()) {
-            smallestK.poll();
-            smallestK.add(arr[i]);
+        if (arr[i] < maxHeap.peek()) {
+            // If the element is smaller than the max, 
+            // remove the max and add the element to the heap. 
+            maxHeap.poll();
+            maxHeap.add(arr[i]);
         }
     }
 
-    return smallestK.peek();
+    // After the traversal, the max is k-th smallest element in the array. 
+    return maxHeap.peek();
 }
 
 

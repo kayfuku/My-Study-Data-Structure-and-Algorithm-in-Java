@@ -4,11 +4,9 @@
 
 package whiteboard;
 
-
 public class ForCopy {
 
 	public static void main(String[] args) {
-
 		
 		String s = "Tact Coa";
 		System.out.println(isPermOfPalin(s)); // true
@@ -36,13 +34,13 @@ public class ForCopy {
 			// 0 ~ 25, -1.
 			//int x = getCharNum(c);
 			int x = getCharNumber(c);
-			bitVector = toggle(bitVector,x);
+			bitVector = toggle(bitVector, x);
 		}
 		
 		return bitVector;
 	}
 
-	// Author for this: kei
+	// Author: kei
 	private static int getCharNumber(char c) {
     	c = Character.toLowerCase(c);
     	if (c >= 'a' && c <= 'z') {
@@ -77,8 +75,12 @@ public class ForCopy {
 			// Toggle it. 0 -> 1
 			return bitVector |= mask;
 		} else {
-			// The bit of bitVector is 1.
+			// The bit of bitVector is 1. 
+			// Note that bitVector is not 1, but > 0.
 			// Toggle it. 1 -> 0
+			// ~mask: z ... d c b a
+			//        1 ... 1 0 1 1 
+			// Keep other bits to be same. 
 			return bitVector &= ~mask;
 		}
 	}
@@ -90,7 +92,8 @@ public class ForCopy {
 	//  &  00001000			 &  01001000
 	//     00000000				01000000
 	// The bits to the right of right-most 1 including the right-most 1 bit
-	// toggle 1 to 0, or 0 to 1 without changing bits on the left hand side of the bit.
+	// toggle 1 to 0, or 0 to 1 so that those bits will be 0 
+	// when doing & without changing bits on the left hand side of the bit.
 	private static boolean checkExactlyOneBitSet(int bitVector) {		
 		return (bitVector & (bitVector - 1)) == 0;
 	}

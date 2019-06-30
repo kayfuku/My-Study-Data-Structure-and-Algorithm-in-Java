@@ -112,7 +112,7 @@ public class Lab01 {
     }
     
     public static int findSummitRecur(int[] arr, int left, int right) {
-        // I don't know if this is necessary, but think about it lator.
+        // I don't know if this is necessary, but I'll think about it later.
         if (left > right) {
             return -1;
         }

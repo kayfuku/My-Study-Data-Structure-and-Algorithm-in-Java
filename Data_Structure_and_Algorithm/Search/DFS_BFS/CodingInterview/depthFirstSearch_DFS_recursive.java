@@ -1,3 +1,4 @@
+// Not very good. (dfsCLRS() is better in DFS_BFS_2.java)
 // Depth First Search (DFS) recursive version.
 // Author: アルゴリズムを学ぼう p.94 + kei
 // Date  : September 22, 2016

@@ -45,7 +45,7 @@ public static void main(String[] args) {
 
     // 3b) Clear from LSB to (p - 1)-th bit. 
     // ex.      num == 10111111 
-    //         mask == 11111000 (p == 3)
+    //      &  mask == 11111000 (p == 3)
     //   numCleared == 10111000  
     int numCleared = num & mask;
 

@@ -1,3 +1,69 @@
+// ArrayList vs LinkedList
+// Author: CS601
+// Date  : October 7, 2018
+
+package mylab;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class Lab01 {
+
+	public static void main(String[] args) {
+	
+		for (int i = 0; i < 5; i++) {
+			testArrayList();
+		}
+//		Time: 1970
+//		Time: 1905
+//		Time: 1739
+//		Time: 1755
+//		Time: 1883
+		
+		System.out.println();
+		
+		for (int i = 0; i < 5; i++) {
+			testLinkedList();
+		}
+//		Time: 9
+//		Time: 6
+//		Time: 7
+//		Time: 5
+//		Time: 15
+		
+		
+		
+		System.out.println();
+		System.out.println("done.");
+	}
+
+
+	public static void testArrayList() {
+		long start = System.currentTimeMillis();
+		ArrayList<Integer> list = new ArrayList<>();
+		for (int i = 0; i < 200000; i++) {
+			list.add(0, i);
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("Time: " + (end - start));
+	}
+	
+
+	public static void testLinkedList() {
+		long start = System.currentTimeMillis();
+		LinkedList<Integer> list = new LinkedList<>();
+		for (int i = 0; i < 200000; i++) {
+			list.add(0, i);
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("Time: " + (end - start));
+		
+	}
+
+}
+
+
+
 // Compare ArrayList with Array and LinkedList. 
 // (By Myself)
 

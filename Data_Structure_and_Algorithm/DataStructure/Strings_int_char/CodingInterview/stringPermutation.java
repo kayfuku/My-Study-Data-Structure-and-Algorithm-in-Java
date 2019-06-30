@@ -48,10 +48,6 @@ public class ForCopy {
         ArrayList<String> combinations = getCombinationsOfString(str5); 
         System.out.println(combinations); // [x, xy, xyz, xz, y, yz, z]
 
-        
-        
-        
-        
     }
     
     

@@ -1,6 +1,6 @@
 // Stack that has a method min() which allows you to get 
 // a minimum value in the stack.
-// Author: Cracking the Coding Interview 3.2 p.205 + kei.
+// Author: CtCI 3.2 p.205 + kei.
 // Date  : February 3, 2016
 
 

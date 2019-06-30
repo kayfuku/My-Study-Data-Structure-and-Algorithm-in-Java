@@ -1,6 +1,6 @@
-// Remove 'remove' string from 'base' string. 
-// withoutString (CodingBat) All Correct, Google Student
-// Author: mirandaio + kei 
+// Remove 'term' string from 'base' string. 
+// withoutString (CodingBat), Google Student
+// Author: mirandaio + kei (All Correct)
 // Date  : September 12, 2018
 
 public class Lab01 {
@@ -16,28 +16,27 @@ public class Lab01 {
 //      System.out.println(new String(arr, 2, 3));  // StringIndexOutOfBoundsException
 //      System.out.println(new String(arr, 0, 5));  // StringIndexOutOfBoundsException
         
-        
-        
 
-     String base = "Hello there";
-     String term = "llo";
-     System.out.println(withoutString(base, term));
+        String base = "Hello there";
+        String term = "llo";
+        System.out.println(withoutString(base, term));
         
-
-
     }
 
 
-
-    public static String withoutString(String base, String remove) {
+    public static String withoutString(String base, String term) {
         char[] arr = new char[base.length()];
         int count = 0;
         int i = 0;
         
-            
-        while(i <= base.length() - remove.length()) {
-            if(base.substring(i, i + remove.length()).toLowerCase().equals(remove.toLowerCase())) {
-                i += remove.length();
+        // I don't have to check all of the characters. 
+        // Practice a lot to figure out the continuing condition quickly. 
+        // index: 0 1 2 3 x (ex. len is 4, term len is 2) 
+        //            |   |   
+        //            i   i + term.length
+        while (i <= base.length() - term.length()) {
+            if (base.substring(i, i + term.length()).toLowerCase().equals(term.toLowerCase())) {
+                i += term.length();
             } else {
                 arr[count] = base.charAt(i);
                 count++;
@@ -45,7 +44,7 @@ public class Lab01 {
             }
         }
                                                             
-        while(i < base.length()) {
+        while (i < base.length()) {
             arr[count] = base.charAt(i);
             count++;
             i++;

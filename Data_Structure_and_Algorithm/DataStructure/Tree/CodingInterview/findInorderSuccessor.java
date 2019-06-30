@@ -9,10 +9,12 @@ TreeNode findInorderSuccessor(TreeNode n) {
     }
 
     if (n.right != null) {
+        // There is a right subtree. 
         // Return leftmost child on right subtree.
         return leftMostChild(n.right);
     } else {
-        // Go up untill we're on left instead of right.
+        // Go up until we're on left instead of right.
+        // When n is a first left child, the parent is in-order successor. 
         TreeNode p = n;
         while (p != null && p.left != n) {
             n = p;
@@ -29,6 +31,7 @@ TreeNode leftMostChild(TreeNode n) {
         return null;
     }
 
+    // Like Linked List. 
     while (n.left != null) {
         n = n.left;
     }

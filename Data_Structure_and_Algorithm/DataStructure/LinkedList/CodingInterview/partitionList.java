@@ -7,7 +7,6 @@ public class ForCopy {
 
 	public static void main(String[] args) {
 		
-		
 		SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
         list.add(1);
         list.add(3);
@@ -17,18 +16,14 @@ public class ForCopy {
         list.add(4);
 		
 		SLLNode<Integer> newHead = partitionList(list.head, 3);
-		newHead.displayList(); // 1 0 2 3 7 4 
+		newHead.displayList(); // [ 1 0 2 3 7 4 ] 
 
-		
-		
-		
-		
-		
 		
 
 	}
 	
 	
+	// Easier for me to understand. 
 	// Author: kei
 	// Date  : December 7, 2016
 	public static SLLNode<Integer> partitionList(SLLNode<Integer> head, int x) {
@@ -38,9 +33,11 @@ public class ForCopy {
 		while (node != null) {
 			SLLNode<Integer> newNode = new SLLNode<Integer>(node.data);
 			if (node.data < x) {
+				// Insert at head pattern. 
 				newNode.next = beforeHead;
 				beforeHead = newNode;				
 			} else {
+				// Insert at head pattern. 
 				newNode.next = afterHead;
 				afterHead = newNode;
 			}
@@ -48,45 +45,48 @@ public class ForCopy {
 			node = node.next;			
 		}
 		
-		if (beforeHead != null) {
-			SLLNode<Integer> n = beforeHead;
-			while (n.next != null) {
-				n = n.next;
-			}
-			n.next = afterHead;		
-			
-			return beforeHead;
-		} else {
+		if (beforeHead == null) {
 			return afterHead;
+		} 
+		
+		SLLNode<Integer> n = beforeHead;
+		// Get to the end node (not null!) of the list. 
+		while (n.next != null) {
+			n = n.next;
 		}
+		n.next = afterHead;		
 
+		return beforeHead;
+		
 	}
 
 
-	// Author: CtCI 6th 2.4 p.213 + kei
+	// Author: CtCI 2.4 p.213 + kei
 	// Date  : September 18, 2016
 	private static SLLNode<Integer> partitionList2(SLLNode<Integer> node, int x) {
 		SLLNode<Integer> head = node;
 		SLLNode<Integer> tail = node;
 
 	    // Divide the list 'node' into two lists.
+	    // I want to check until the last node. 
 	    while (node != null) {
 	        // Necessary for moving to the next node in the original list.
 	        // Because node.next gets null or a node in the new list. 
 	    	SLLNode<Integer> nextNode = node.next;
 	        
 	        if (node.data < x) {
-	            // Insert node at head.
+	            // Insert node at head pattern.
 	            node.next = head;
 	            head = node;
 	        } else {
-	            // Insert node at tail.
+	            // Insert node at tail pattern. 
 	            tail.next = node;
 	            tail = node;
 	        }
 
 	        node = nextNode;
 	    }
+	    // Don't forget this.
 	    tail.next = null;
 	    
 	    return head;

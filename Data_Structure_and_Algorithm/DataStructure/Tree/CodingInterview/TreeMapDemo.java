@@ -30,13 +30,9 @@ public class Lab_whiteboard {
         
         // If you want to access the values by index. 
         ArrayList<Integer> ret = new ArrayList<>(tMap.values());
+        System.out.println(ret.toString()); // [1, 4, 2, 3, 0]
         
-        
-        
-        
-
-        
-        
+              
         
         System.out.println();
         System.out.println("done.");

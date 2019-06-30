@@ -82,15 +82,15 @@ public class Lab_whiteboard {
     }
     
     private static boolean isSymmetricTree(
-            SimpleTreeNode subtree0, SimpleTreeNode subtree1) {
-        if (subtree0 == null && subtree1 == null) {
+            SimpleTreeNode subtreeL, SimpleTreeNode subtreeR) {
+        if (subtreeL == null && subtreeR == null) {
             return true;
-        } else if (subtree0 != null && subtree1 != null) {
+        } else if (subtreeL != null && subtreeR != null) {
             return (/* Check if the root item is equal. */
-                    subtree0.data == subtree1.data 
+                    subtreeL.data == subtreeR.data 
                     /* Check if the children are symmetric. */
-                    && isSymmetricTree(subtree0.left, subtree1.right) 
-                    && isSymmetricTree(subtree0.right, subtree1.left));
+                    && isSymmetricTree(subtreeL.left, subtreeR.right) 
+                    && isSymmetricTree(subtreeL.right, subtreeR.left));
         }
         
         // One subtree is empty, and the other is not. 

@@ -1,7 +1,8 @@
-// Find k-th smallest element in an array. 
+// Find k-th smallest element in an array using partitioning. O(n)
+// Or calculate median of the elements in an array. O(n)
 // Author: kei + Coursera, "Mastering Software Engineering Interview", week 4
 // (https://www.coursera.org/learn/cs-tech-interview/lecture/r6mFR/case-study-next-steps)
-// Date  : November 25, 2016
+// Date  : November 25, 2016, December 29, 2018
 
 package whiteboard;
 
@@ -34,7 +35,7 @@ public class ForCopy {
 //        System.out.println(num); // 1 (Sometimes stack overflow.)
         
         
-        // Calculate median of an array. 
+        // Calculate median of an array. O(n)
         int[] nums5 = new int[]{ 2, 0, -1, 4, 6, 1, 3, 2};
         int m1 = findKthSmallest(nums5, nums5.length / 2);
         int m2 = findKthSmallest(nums5, nums5.length / 2 - 1); 
@@ -74,22 +75,26 @@ public class ForCopy {
         int pivotIndex = rand.nextInt(right - left + 1);
         int pivot = array[pivotIndex];
         
-        // Get the size of smaller values group. 
-        int sizeSmall = partition(array, left, right, pivot) - left + 1;
+        // Get the size of less-than group. 
+        int endLeft = partition(array, left, right, pivot);
+        int sizeLeft = endLeft - left + 1;
         
-        if (sizeSmall + 1 == k) {
+        if (sizeLeft + 1 == k) {
+            // Point! 
             return pivot;
-        } else if (sizeSmall + 1 > k) {
-            return findKthSmallest(array, left, left + sizeSmall - 1, k);
+        } else if (sizeLeft + 1 > k) {
+            // Check the left partition. 
+            return findKthSmallest(array, left, endLeft, k);
         } else {
-            // sizeSmall + 1 < k 
-            //k -= sizeSmall;
-            return findKthSmallest(array, left + sizeSmall, right, k - sizeSmall);
+            // Check the right partition. 
+            // sizeLeft + 1 < k 
+            //k -= sizeLeft;
+            return findKthSmallest(array, left + sizeLeft, right, k - sizeLeft);
         }
     }
-    // Split the array into two groups. 
-    // One is less-than-pivot group and the other is
-    // greater-than-or-equal-to-pivot group. 
+    // Split the array into two groups. O(n)
+    // One is less-than-pivot group (left partition) and the other is
+    // greater-than-or-equal-to-pivot group (right partition). 
     // Returns the last index of the less-than group. 
     // j is a pointer that points to the beginning of unknown group. 
     // i is a pointer that points to the last of the less-than group. 
@@ -98,6 +103,7 @@ public class ForCopy {
         for (int j = left; j < right + 1; j++) {
             if (array[j] < pivot) {
                 i++;
+                // Swap array[i] with array[j]. 
                 int t = array[i];
                 array[i] = array[j];
                 array[j] = t;
@@ -109,6 +115,9 @@ public class ForCopy {
 
     
     
+
+
+
     
     
     

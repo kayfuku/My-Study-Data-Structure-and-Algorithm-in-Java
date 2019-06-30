@@ -1,12 +1,12 @@
-// Create a minimal Binary Search Tree from a sorted array.
+// Create a minimal height Binary Search Tree from a sorted array.
 // Author: CtCI 4.2 p.242 + kei.
 // Date  : February 10, December 8, 2016
 
-TreeNode createMinimalBST(int[] array) {
-    return createMinimalBST(array, 0, array.length - 1);
+TreeNode createMinimalHeightBST(int[] array) {
+    return createMinimalHeightBST(array, 0, array.length - 1);
 }
 
-TreeNode createMinimalBST(int[] arr, int start, int end) {
+TreeNode createMinimalHeightBST(int[] arr, int start, int end) {
     // Base case.
     // Like Binary Search. 
     if (end < start) {
@@ -18,10 +18,11 @@ TreeNode createMinimalBST(int[] arr, int start, int end) {
     // Create a root node. 
     TreeNode node = new TreeNode(arr[mid]);
     // Create the left subtree. 
-    node.left = createMinimalBST(arr, start, mid - 1);
+    node.left = createMinimalHeightBST(arr, start, mid - 1);
     // Create the right subtree. 
-    node.right = createMinimalBST(arr, mid + 1, end);
+    node.right = createMinimalHeightBST(arr, mid + 1, end);
 
+    // Don't forget this!
     return node;
 }
 

@@ -27,7 +27,7 @@ public class ArrayToFromArrayList
 
 		System.out.println();
 		
-		// Integer Array to ArrayList. 
+		// Integer Array to ArrayList<Integer>. 
 		// Be aware that it is not int[] but Integer[]. 
 		Integer[] nums = {2, 2, 5, 2, 3, 4, 2, 2, 5, 9};
 		List<Integer> arrayListIntegers = new ArrayList<Integer>();
@@ -42,6 +42,15 @@ public class ArrayToFromArrayList
 				
 		List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
 		System.out.println(list.toString()); // [1, 2, 3, 4, 5]
+
+
+
+		// ArrayList<Integer> to int array. 
+		int[] res = new int[list.size()];
+		for (int j = 0; j < list.size(); j++) {
+		  res[j] = list.get(j);
+		}
+		System.out.println(Arrays.toString(res)); // [1, 2, 3, 4, 5]
 
 
 		

@@ -5,7 +5,6 @@
 
 package whiteboard;
 
-
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
@@ -44,7 +43,7 @@ public class Lab_whiteboard {
     } // end main().
     
     
-    // Reverse the order of a list. O(N)
+    // Reverse the order of a list. Iterative version. O(N) 
     // Author: EPI 8.2 p.104 + kei
     // Date  : November 18, 2016
     public static SLLNode<Integer> reverseList(SLLNode<Integer> L) {
@@ -105,6 +104,40 @@ public class Lab_whiteboard {
         return reverseListRecur(dummy, iter);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

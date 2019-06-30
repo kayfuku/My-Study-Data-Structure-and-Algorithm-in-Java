@@ -14,10 +14,10 @@ ArrayList<LinkedList<TreeNode>> createLevelLinkedList(TreeNode root) {
 
 // The whole idea is DFS, pre-order traversal in a binary tree.
 void createLevelLinkedList(
-    TreeNode root, ArrayList<LinkedList<TreeNode>> lists, int level) {
+    TreeNode node, ArrayList<LinkedList<TreeNode>> lists, int level) {
 
     // Base case.
-    if (root == null) {
+    if (node == null) {
         return;
     }
 
@@ -29,15 +29,16 @@ void createLevelLinkedList(
         listEachLevel = new LinkedList<TreeNode>();
         lists.add(listEachLevel);        
     } else {
+        // Get the list. 
         listEachLevel = lists.get(level);
     }
 
     // Add the node.
-    listEachLevel.add(root);
+    listEachLevel.add(node);
 
     // Part of DFS pre-order traversal in a binary tree.
-    createLevelLinkedList(root.left, lists, level + 1);
-    createLevelLinkedList(root.right, lists, level + 1);
+    createLevelLinkedList(node.left, lists, level + 1);
+    createLevelLinkedList(node.right, lists, level + 1);
 }
 
 

@@ -6,7 +6,6 @@ package whiteboard;
 import java.util.Arrays;
 
 
-
 public class Lab_whiteboard {
 
 	public static void main(String[] args) {
@@ -16,15 +15,13 @@ public class Lab_whiteboard {
 		System.out.println(isPermutation2(s1, s2)); // true 
 		
 		
-		
-		
-		
 		System.out.println();
 		System.out.println("done.");
 		return;
 	} // end main().
 	
 	
+	// Permutation means that the num of each kind of characters is the same. 
 	// Author: CtCI 1.2 p.194 + kei
 	// Date  : December 6, 7, 2016
 	public static boolean isPermutation(String s1, String s2) {
@@ -102,8 +99,6 @@ public class Lab_whiteboard {
 	}
 
 
-	
-	
 	// Check if one string is a permutation of the other.
 	// Character code is ASCII.
 	// Author: Cracking Coding Interview p.174  + kei.

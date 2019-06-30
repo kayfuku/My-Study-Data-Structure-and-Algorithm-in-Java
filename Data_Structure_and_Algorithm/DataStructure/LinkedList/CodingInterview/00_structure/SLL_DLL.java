@@ -70,28 +70,35 @@ public class SLL_DLL {
 		//System.out.println(isEqualList(singlyLL, listReverse)); // true
 		
 		// Test findMiddleNode(). 
+		System.out.println("Test findMiddleNode().");
 		SLLNode<Integer> singlyLL5 = new SLLNode<Integer>(1);
 		singlyLL5.insertTail(2);
 		singlyLL5.insertTail(3);
 		singlyLL5.insertTail(4);
 		singlyLL5.insertTail(5);
-		//singlyLL5.displayList(); // 1 2 3 4 5 
+		singlyLL5.displayList(); // 1 2 3 4 5 
 		//System.out.println(findMiddleNode(singlyLL5)); // 4
 		singlyLL5.deleteNode(5);
-		//singlyLL5.displayList(); // 1 2 3 4 
-		//System.out.println(findMiddleNode(singlyLL5)); // 3
+		singlyLL5.displayList(); // 1 2 3 4 
+		System.out.println(findMiddleNode(singlyLL5)); // 3
 
 		// Test getSizeOfList().
 		//singlyLL.displayList(); // 0 2 1 3 2 
 		//System.out.println(getSizeOfList(singlyLL)); // 5
 
-		// Test getKthNode();
-		//singlyLL.displayList(); // 0 2 1 3 2 
-		SLLNode<Integer> n = getKthNode(singlyLL, 5);
-		//System.out.println(n.data); // 1
+		// Test getKthNode().
+		System.out.println("Test getKthNode().");
+		singlyLL.displayList(); // 0 2 1 3 2 
+		SLLNode<Integer> n = getKthNode(singlyLL, 4);
+		System.out.println(n.data); // 2
 		// Because in Java, it's always 'Pass by value'.
 		//System.out.println(singlyLL.data); // 0
 		
+		// Test getKthNode2().
+		System.out.println("Test getKthNode2().");
+		singlyLL.displayList(); // 0 2 1 3 2 
+		SLLNode<Integer> n2 = getKthNode2(singlyLL, 4);
+		System.out.println(n2.data); // 3
 		
 		SinglyLinkedList<Integer> list2 = new SinglyLinkedList<>();
 		list2.add(1);
@@ -118,9 +125,20 @@ public class SLL_DLL {
 		System.out.println(list3.toString()); // [ 8 6 5 1 ]
 
 		
+		// Test search().
+		singlyLL5.displayList(); // [ 1 2 3 4 ]
+		SLLNode<Integer> node = singlyLL5.search(singlyLL5, 4);
+		System.out.println(node.data); // 4
 		
+		// Test search2().
+		singlyLL5.displayList(); // [ 1 2 3 4 ]
+//		SLLNode<Integer> node2 = singlyLL5.search2(singlyLL5, 5);
+//		System.out.println(node2.data); // RuntimeException, Not found. 
 		
-		
+		// Test search2().
+		singlyLL5.displayList(); // [ 1 2 3 4 ]
+		SLLNode<Integer> node3 = singlyLL5.deleteNode2(4);
+		node3.displayList(); // [ 1 2 3 ]
 
 		
 		
@@ -225,10 +243,14 @@ public class SLL_DLL {
 		return size;		
 	}
 	
-	// Get the k-th node.
+	// Get the k-th node starting with 0. 
 	// Author: CtCI 6th p.222 + kei
 	// Date  : October 23, 2016
 	public static SLLNode<Integer> getKthNode(SLLNode<Integer> node, int k) {
+		if (node == null || k < 0) {
+			return null;
+		}
+		
 		// You can use formal argument because in Java it's always 'pass by value'.
 	    while (k > 0 && node != null) {
 	        node = node.next;
@@ -236,6 +258,23 @@ public class SLL_DLL {
 	    }
 	    // Note that if k > len - 1, then return null.
 	    return node;
+	}
+	
+	// Get the k-th node starting with 1. 
+	// Author: kei
+	// Date  : December 22, 2018
+	public static SLLNode<Integer> getKthNode2(SLLNode<Integer> node, int k) {
+		if (node == null || k <= 0) {
+			return null;
+		}
+
+		// The pointer must move k - 1 times to the next node, not null end. 
+		// So, node == null means k is bigger than the length of the list. 
+		while (k - 1 > 0 && node != null) {
+			node = node.next;
+			k--;
+		}
+		return node;
 	}
 	
 	
@@ -433,15 +472,49 @@ class SLLNode<T> {
 		return this;
 	}
 	
+	// Delete node. Easier to understand for me! 
+	// Author: kei
+	// Date  : December 22, 2018
+	public SLLNode<T> deleteNode2(T data) {
+		SLLNode<T> node = this;
+		SLLNode<T> prev = null;
+		
+		// Delete head node.
+		// Regardless of whether the list has just one node or more.
+		if (node.data == data) {
+			return node.next;
+		}
+		
+		prev = node;
+		node = node.next;
+
+		// Delete middle or tail node.
+		// Get to the prev to the target.
+		// You need prev node to delete node.
+		while (node != null) {
+			if (node.data == data) {
+				prev.next = node.next;
+				return this;
+			}	
+			prev = node;
+			node = node.next;
+		}
+
+		// Not found.
+		return this;
+	}
+	
 	// Display every element of the list. 
 	// Author: kei
 	// Date  : October 19, 2016
 	public void displayList() {
 		SLLNode<T> node = this;
+		System.out.print("[ ");
 		while (node != null) {
-			System.out.println(node.data);
+			System.out.print(node.data + " ");
 			node = node.next;
 		}
+		System.out.println("]");
 	}
 	
 	// Search key in SLL.
@@ -453,15 +526,31 @@ class SLLNode<T> {
 			node = node.next;
 		}
 		
-		return node;	
+//		return node;	
 		
 		// PIE p.36 + kei
 		// October 30, 2016
-//		if (node == null) {
-//			throw new RuntimeException("Not found.");
-//		} else {
-//			return node;
-//		}
+		if (node == null) {
+			throw new RuntimeException("Not found.");
+		} else {
+			return node;
+		}
+	}
+	
+	// Search key in SLL. Easier to understand for me! 
+	// Author: kei
+	// Date  : December 22, 2018
+	public SLLNode<T> search2(SLLNode<T> node, T key) {
+
+		// Check until the last node. 
+		while (node != null) {
+			if (node.data == key) {
+				return node;
+			}
+			node = node.next;
+		}
+		
+		throw new RuntimeException("Not found.");
 	}
 	
 	// Insert a new node after a specified node.

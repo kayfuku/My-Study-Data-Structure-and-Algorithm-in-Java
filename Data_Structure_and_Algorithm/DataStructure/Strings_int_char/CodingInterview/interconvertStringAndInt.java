@@ -2,13 +2,10 @@
 // Author: EPI p.86 + kei
 // Date  : November 8, 2016
 
-package whiteboard;
-
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
 
-        
         // Test intToString().
         int n = 413;
         System.out.println(intToString(n)); // 413
@@ -55,7 +52,10 @@ public class Lab_whiteboard {
         boolean isNegative = s.charAt(0) == '-';
         int result = 0;
         for (int i = (isNegative ? 1 : 0); i < s.length(); i++) {
+            // char number to int. 
             int digit = s.charAt(i) - '0';
+            // String number to int pattern. 
+            // Process digit from left to right in the string. 
             result = result * 10 + digit;
         }
         

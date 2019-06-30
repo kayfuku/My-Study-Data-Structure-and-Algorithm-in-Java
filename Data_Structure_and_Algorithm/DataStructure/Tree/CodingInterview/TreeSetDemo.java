@@ -23,7 +23,7 @@ public class Lab01 {
         treeSet.add(4);
         treeSet.add(6);
         for (Integer integer : treeSet) {
-            System.out.println(integer);
+            System.out.println(integer); // 1 2 4 6 7 9 
         }
         System.out.println();
 

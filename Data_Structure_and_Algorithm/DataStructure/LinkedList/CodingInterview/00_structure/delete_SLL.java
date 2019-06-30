@@ -1,5 +1,5 @@
-// Delete a node in a singly Linked List.
-// Author: Cracking the Coding Interview p.78 + kei.
+// Delete a node in a singly Linked List using two pointers. 
+// Author: CtCI p.93 + kei.
 // Date  : January 31, 2016
 
 

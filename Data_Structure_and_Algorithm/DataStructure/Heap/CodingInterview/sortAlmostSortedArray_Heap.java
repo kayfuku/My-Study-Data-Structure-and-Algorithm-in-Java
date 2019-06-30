@@ -1,4 +1,5 @@
 // Sort an almost sorted array. 
+// Each number is within k positions including its correctly sorted position. 
 // Author: EPI 11.3 p.164 + kei
 // Date  : November 28, 2016
 
@@ -17,9 +18,8 @@ public class Lab_whiteboard {
 
         Integer[] nums = new Integer[]{ 3, -1, 2, 6, 4, 5, 8, 10, 7, 9 };
         List<Integer> list = new ArrayList<>(Arrays.asList(nums));
-        Iterator iter = list.iterator();
-        sortAlmostSortedArray(iter, 2); // -1 2 3 4 5 6 7 8 9 10  
-        
+        ArrayList<Integer> sortedList = sortAlmostSortedArray(list, 3);   
+        System.out.println(sortedList.toString()); // [-1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         
         
@@ -32,21 +32,30 @@ public class Lab_whiteboard {
     
     // O(n log k) time.
     // O(k) space. 
-    public static void sortAlmostSortedArray(Iterator<Integer> sequence, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        // Fill the heap. 
-        for (int i = 0; i < k + 1 && sequence.hasNext(); i++) {
-            minHeap.add(sequence.next());
+    public static ArrayList<Integer> sortAlmostSortedArray(List<Integer> list, int k) {
+        if (k > list.size()) {
+            throw new IllegalArgumentException();
         }
         
-        Integer n;
-        while ((n = minHeap.poll()) != null) {
-            System.out.println(n);
-            if (sequence.hasNext()) {
-                minHeap.add(sequence.next());
-            }           
+        ArrayList<Integer> result = new ArrayList<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        
+        // Fill the heap. 
+        Iterator<Integer> iter = list.iterator();
+        for (int i = 0; i < k; i++) {
+            minHeap.add(iter.next());
         }
 
+        // Use while-loop because you need to flush out the elements in the heap. 
+        Integer n;
+        while ((n = minHeap.poll()) != null) {
+            result.add(n);
+            if (iter.hasNext()) {
+                minHeap.add(iter.next());
+            }           
+        }
+        
+        return result;
     }
     
     

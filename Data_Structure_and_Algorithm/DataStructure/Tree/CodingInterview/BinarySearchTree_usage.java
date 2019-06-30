@@ -55,7 +55,7 @@ public class BinarySearchTree_usage {
 		// Test getHeight() 
 		System.out.println("height");
 		int h = getHeight(tNode);
-		System.out.println(h);
+		System.out.println(h); // 2
 		System.out.println();
 		
 	    // Test isBlanced().

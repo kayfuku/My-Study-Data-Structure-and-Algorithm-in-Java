@@ -21,13 +21,13 @@ public class Lab_whiteboard {
 		linkedHashSet.add(5);
 		linkedHashSet.add(2);
 		linkedHashSet.add(6);
-		linkedHashSet.add(8);
+		linkedHashSet.add(2);
 		linkedHashSet.add(7);
-		linkedHashSet.add(0);
+		linkedHashSet.add(4);
 		for (Integer integer : linkedHashSet) {
 			System.out.println(integer);
 		}
-		// 1 4 5 2 6 8 7 0 
+		// 1 4 5 2 6 7 
 		// iterator() returns keys in the order in which they were inserted into the set. 
 		
 		System.out.println();
@@ -38,13 +38,13 @@ public class Lab_whiteboard {
 		set.add(5);
 		set.add(2);
 		set.add(6);
-		set.add(8);
+		set.add(2);
 		set.add(7);
-		set.add(0);
+		set.add(4);
 		for (Integer integer : set) {
 			System.out.println(integer);
 		}
-		// 0 1 2 4 5 6 7 8 
+		// 1 2 4 5 6 7 
 		// iterator() returns keys in an unspecified order. 
 
 		

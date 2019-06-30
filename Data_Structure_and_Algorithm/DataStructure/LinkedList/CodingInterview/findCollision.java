@@ -8,6 +8,8 @@ while (node1 != node2) {
     node2 = node2.next;
 }
 
+// Return either one.
+return node1;
 
 // or you can use hash table
 // to detect the same node. 

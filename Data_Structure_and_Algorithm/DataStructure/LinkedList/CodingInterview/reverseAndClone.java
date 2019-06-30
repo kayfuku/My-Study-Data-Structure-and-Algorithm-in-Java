@@ -1,11 +1,8 @@
 // Reverse and clone the list.
-// Author: CtCI 6th p.217 + kei
+// Author: CtCI 2.6 p.217 + kei
 // Date  : October 19, November 18, 2016
 
 package whiteboard;
-
-
-
 
 public class Lab_whiteboard {
 

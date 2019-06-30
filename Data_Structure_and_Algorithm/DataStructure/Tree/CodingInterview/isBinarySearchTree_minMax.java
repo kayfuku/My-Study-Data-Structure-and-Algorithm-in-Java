@@ -1,4 +1,7 @@
 // Check if a tree is Binary Search Tree.
+// Warning!! Min/Max is not good. 
+// Check out leetcode/ValidateBinarySearchTree.java
+// Date  : June 3, 2019
 
 package whiteboard;
 
@@ -68,8 +71,12 @@ public class Lab_whiteboard {
 
     
 
+    // Warning!! Min/Max is not good. 
+    // Check out leetcode/ValidateBinarySearchTree.java
+    // Date  : June 3, 2019 
+
     // This is the best. 
-    // Check if a tree is Binary Search Tree.
+    // Check if a tree is Binary Search Tree. (left <= mid < right)
     // Min/Max version. 
     // Author: EPI 15.1 p.236 + kei
     // Date  : January 29, 2017 
@@ -82,15 +89,19 @@ public class Lab_whiteboard {
             return true;
         }
 
+        // Check! (Pre-order traversal)
         if (node.data <= min || node.data > max) {
             return false;
         }
 
-        // This is simpler. 
         return isBinarySearchTree(node.left, min, node.data) 
             && isBinarySearchTree(node.right, node.data, max);
     }
 
+
+    // Warning!! Min/Max is not good. 
+    // Check out leetcode/ValidateBinarySearchTree.java
+    // Date  : June 3, 2019 
 
     // Check if a tree is Binary Search Tree.
     // Min/Max version. 
@@ -126,7 +137,9 @@ public class Lab_whiteboard {
     }
 
 
-
+    // Warning!! Min/Max is not good. 
+    // Check out leetcode/ValidateBinarySearchTree.java
+    // Date  : June 3, 2019 
 
     // This code doesn't work when the tree is a very small tree. 
     // Check if a tree is Binary Search Tree.

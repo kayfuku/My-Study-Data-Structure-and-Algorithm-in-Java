@@ -1,4 +1,4 @@
-// Count the occurance of switching through the array, 
+// Count the max occurance of contiguous switching through the array, 
 // keeping track of max. 
 // Author: a topcoder + kei
 // Date : December 14, 2016
@@ -48,7 +48,7 @@ public class AlternatingString {
 			if (s.charAt(i) != s.charAt(i - 1)) {
 				len++;
 			} else {
-				// Get max each loop!
+				// Get max each loop! Not here. 
 				max = Math.max(max, len);
 				len = 1;
 			}

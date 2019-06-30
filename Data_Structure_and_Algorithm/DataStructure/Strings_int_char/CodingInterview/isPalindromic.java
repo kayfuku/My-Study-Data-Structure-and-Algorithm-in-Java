@@ -8,7 +8,6 @@ public class Lab_whiteboard {
 
     public static void main(String[] args) {
 
-        
         String s1 = "abcba";
         String s2 = "abccba";
         String s3 = "abcda";
@@ -24,7 +23,7 @@ public class Lab_whiteboard {
         return;
     } // end of main().
     
-
+    
     // Check if the string is palindromic. 
     // O(N) time, O(1) space.
     // Author: EPI p.84 + kei

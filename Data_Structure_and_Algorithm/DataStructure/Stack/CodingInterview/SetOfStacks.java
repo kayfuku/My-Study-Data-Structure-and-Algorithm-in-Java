@@ -16,6 +16,7 @@ class SetOfStacks {
         if (stacks.size() == 0) {
             return null;
         }
+        // Get the last element of the ArrayList. 
         return stacks.get(stacks.size() - 1);
     }
 
@@ -33,14 +34,50 @@ class SetOfStacks {
 
     public int pop() {
         LinkedList<Integer> lastStack = getLastStack();
-        int value = lastStack.poll();
+        if (lastStack == null) {
+            throw new EmptyStackException();
+        }
+        int value = lastStack.pop();
         if (lastStack.size() == 0) {
+            // Remove the last element of the ArrayList. 
             stacks.remove(stacks.size() - 1);
         }
         return value;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

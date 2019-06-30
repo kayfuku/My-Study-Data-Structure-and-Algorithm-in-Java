@@ -35,19 +35,44 @@ import java.util.HashMap;
 
 public class 00_Warning_Map_Set {
 
-	public static void main(String[] args) {
-
-		System.out.println();		
-		
+	public static void main(String[] args) {		
 		HashMap<Point, Boolean> memo = new HashMap<Point, Boolean>();
-		
 		Point p = new Point(3, 5);
-		
 		memo.put(p, true);
-		
 		Point point = new Point(3, 5);
+		System.out.println(memo.containsKey(point)); // true
+
+
+		Map<String, Integer> items = new HashMap<>();
+		items.put("A", 10);
+		items.put("B", 20);
+		items.put("C", 30);
+		items.put("D", 40);
+		items.put("E", 50);
+		items.put("F", 60);
 		
-		System.out.println(memo.containsKey(point));
+		// We can loop a Map with forEach and lambda expression. 
+		items.forEach((k,v)->System.out.println("Item : " + k + " Count : " + v));
+		// Item : A Count : 10
+		// Item : B Count : 20
+		// Item : C Count : 30
+		// Item : D Count : 40
+		// Item : E Count : 50
+		// Item : F Count : 60
+		
+		items.forEach((k,v)->{
+			System.out.println("Item : " + k + " Count : " + v);
+			if("E".equals(k)){
+				System.out.println("Hello E");
+			}
+		});
+		// Item : A Count : 10
+		// Item : B Count : 20
+		// Item : C Count : 30
+		// Item : D Count : 40
+		// Item : E Count : 50
+		// Hello E
+		// Item : F Count : 60
 		
 		
 		System.out.println();

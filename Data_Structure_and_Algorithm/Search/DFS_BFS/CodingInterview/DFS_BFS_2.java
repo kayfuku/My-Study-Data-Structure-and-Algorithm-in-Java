@@ -21,17 +21,28 @@ public class DFS_BFS_2 {
 		
 		GraphAdjList graph = createGraph();
 		
-		// DFS.
+		// DFS. Test dfs().
 //		boolean result = dfs(graph, new Vertex2("a"), new Vertex2("f"), new HashSet<Vertex2>());
 //		System.out.println(result); // a b d c e f true 
 
-		// DFS iterative version.
+		// DFS iterative version. Test dfsIter().
 //		boolean result = dfsIter(graph, new Vertex2("a"), new Vertex2("d"));
-//		System.out.println(result); // a b d c e f true 
+//		System.out.println(result); // a c e f b d true 
 		
-		// BFS.
-		boolean result = bfs(graph, new Vertex2("a"), new Vertex2("f"));
-		System.out.println(result); // a b c d e f true 
+		// BFS. Test bfs().
+//		boolean result = bfs(graph, new Vertex2("a"), new Vertex2("f"));
+//		System.out.println(result); // a b c d e e f true   ???
+		
+		// DFS. Test dfsCLRS().
+//		boolean result = dfsCLRS(graph, new Vertex2("a"), new Vertex2("f"), new HashSet<Vertex2>());
+//		System.out.println(result); // a b d c e f true 
+
+		// BFS. Test bfsCLRS().
+		System.out.println("bfsCLRS()");
+		boolean result = bfsCLRS(graph, new Vertex2("a"), new Vertex2("f"));
+		System.out.println(result); // a b c d e f true
+
+		
 
 	}
 	
@@ -58,7 +69,7 @@ public class DFS_BFS_2 {
 		ArrayList<Vertex2> bList = new ArrayList<Vertex2>();
 		bList.add(dVertex);
 		bList.add(eVertex);
-		bList.add(fVertex);
+//		bList.add(fVertex);
 		g.adjLists.put(bVertex, bList);
 		ArrayList<Vertex2> cList = new ArrayList<Vertex2>();
 		cList.add(bVertex);
@@ -88,9 +99,77 @@ public class DFS_BFS_2 {
 		
 		return g;
 	}
+	
+	
+	/**
+	 * Depth First Search. Search for goal node traversing from node v.
+	 * @param visited A set of vertices that have been visited before.
+	 */
+	// Author: CLRS p.604 + kei
+	// Date  : December 31, 2018
+	public static boolean dfsCLRS(GraphAdjList g, Vertex2 v, Vertex2 goal, Set<Vertex2> visited) {
+		System.out.println(v);
+	    if (v.equals(goal)) {
+	        // 'goal' found.
+	        return true;
+	    }
+
+	    visited.add(v);
+	    
+	    // DFS.
+	    ArrayList<Vertex2> vertices = g.getAdjVertices(v);
+	    if (vertices != null) {
+	    	for (Vertex2 vertex : vertices) {
+		        if (!visited.contains(vertex)) {
+		        	// Visit child nodes that has not been visited yet. 
+		            return dfsCLRS(g, vertex, goal, visited);
+		        }
+		    }			
+		}
+
+	    // Not found.
+	    return false;
+	}
+	
+	
+	/**
+	 * Breadth First Search. Search for goal node traversing from node v.
+	 */
+	// Author: CLRS p.595 + kei
+	// Date  : December 31, 2018
+	public static boolean bfsCLRS(GraphAdjList g, Vertex2 start, Vertex2 goal) {
+	    Set<Vertex2> visited = new HashSet<Vertex2>();
+	    LinkedList<Vertex2> queue = new LinkedList<Vertex2>();
+
+	    queue.add(start);
+
+	    while (!queue.isEmpty()) {
+	        Vertex2 v = queue.poll();
+	        System.out.println(v);
+
+	        if (v.equals(goal)) {
+	            // Found.
+	            return true;
+	        }
+	        
+	        ArrayList<Vertex2> vertices = g.getAdjVertices(v);
+	        if (vertices != null) {
+	        	for (Vertex2 vertex : vertices) {
+		        	if (!visited.contains(vertex)) {
+		        		visited.add(vertex);
+						queue.add(vertex);
+					}		        	
+		        }
+			}
+	    } // end while (...)
+
+	    // Not found.
+	    return false;
+	}
 
 
 	/**
+	 * Not very good. 
 	 * Depth First Search. Search for goal node traversing from node v.
 	 * @param visited A set of vertices that have been visited before.
 	 */
@@ -174,6 +253,7 @@ public class DFS_BFS_2 {
 	}
 
 	/**
+	 * Bad code!
 	 * Breadth First Search. Search for goal node traversing from node v.
 	 */
 	// Author: kei

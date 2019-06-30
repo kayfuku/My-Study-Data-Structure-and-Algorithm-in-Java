@@ -10,7 +10,6 @@ public class Lab01 {
 
     public static void main(String[] args) {
 
-        
         LinkedList<Integer> list = new LinkedList<>();
         list.add(1);
         list.add(0);
@@ -27,7 +26,10 @@ public class Lab01 {
         // Primitive type does not accept null. 
         int num = list.get(2); // NullPointerException 
         
-        
+        // It is not empty even if the list only has null. 
+        LinkedList<Integer> list = new LinkedList<>();
+        list.push(null);
+        System.out.println(list.isEmpty()); // false
         
         
         

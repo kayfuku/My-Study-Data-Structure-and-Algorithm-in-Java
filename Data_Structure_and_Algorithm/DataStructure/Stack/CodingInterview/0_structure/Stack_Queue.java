@@ -109,7 +109,7 @@ public class Stack_Queue {
 
 
 // Stack. (Reference-based)
-// Author: Cracking the Coding Interview 6th edition p.96 + kei.
+// Author: CtCI p.96 + kei.
 // Date  : September 19, 2016
 class MyStackRef<T> {
 
@@ -127,7 +127,7 @@ class MyStackRef<T> {
 
 	public void push(T item) {
 		StackNode<T> newNode = new StackNode<T>(item);
-		// Insert node at head.
+		// Insert node at head pattern. 
 		newNode.next = top;
 		top = newNode;
 	}
@@ -180,6 +180,7 @@ class MyStackArr {
 	public MyStackArr() {
 		arr = new Object[MAX_STACK];
 		top = -1;
+		size = 0;
 	}
 	
 	void push(Object obj) {
@@ -202,9 +203,10 @@ class MyStackArr {
 		if (isEmpty()) {
 			throw new RuntimeException();
 		}
+		Object obj = arr[top];
 		top--;
 		size--;
-		return arr[top + 1];		
+		return obj;		
 	}
 	
 	
@@ -253,7 +255,7 @@ class MyQueueRef<T> {
 	void enqueue(T item) {
 		QueueNode<T> t = new QueueNode<T>(item);
 		if (tail != null) {
-			// Insert node at tail.
+			// Insert node at tail pattern. 
 			tail.next = t;
 		}
 		tail = t;

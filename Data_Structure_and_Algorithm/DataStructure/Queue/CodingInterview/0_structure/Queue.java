@@ -1,5 +1,5 @@
 // Queue. (Reference-based)
-// Author: Cracking the Coding Interview 6th edition p.96 + kei.
+// Author: CtCI p.96 + kei.
 // Date  : September 19, 2016
 
 class MyQueue<T> {

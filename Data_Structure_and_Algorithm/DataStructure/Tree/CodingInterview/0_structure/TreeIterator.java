@@ -17,7 +17,7 @@ class TreeIterator<T> implements Iterator<T>
         binTree = bTree;
         currentNode = null;
         // empty queue indicates no traversal type currently
-        // selected or end of current traversal has been reached
+        // selected or end of current traversal has been reached. 
         queue = new LinkedList<TreeNode<T>>();
     } // end constructor
 

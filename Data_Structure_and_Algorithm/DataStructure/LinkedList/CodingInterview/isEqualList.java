@@ -1,5 +1,5 @@
 // Check if two list match.
-// Author: CtCI 6th p.217 + kei
+// Author: CtCI 2.6 p.217 + kei
 // Date  : October 19, 2016
 public static boolean isEqualList(SLLNode<Integer> node1, 
                                   SLLNode<Integer> node2) {

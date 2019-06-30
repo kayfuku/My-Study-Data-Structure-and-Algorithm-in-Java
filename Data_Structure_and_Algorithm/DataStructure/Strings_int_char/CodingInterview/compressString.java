@@ -1,5 +1,5 @@
 // Compress String. Easier to read than before. 
-// Author: CtCI p.202 + kei.
+// Author: CtCI 1.6 p.202 + kei.
 // Date  : January 26, 2018
 // ex.  "aabcccccaaa" >> "a2b1c5a3"
 static String compressString(String str) {
@@ -18,6 +18,7 @@ static String compressString(String str) {
         countConsecutive++;
         
         // If next char is different than current, append this char to result.
+        // Or, if i + 1 reaches the end. 
         if (i + 1 >= str.length() || str.charAt(i) != str.charAt(i + 1))  {
             // Character changed. 
             compressed.append(str.charAt(i));
@@ -35,7 +36,8 @@ static int countCompressedSize(String str) {
     for (int i = 0; i < str.length(); i++) {
         countConsecutive++;
         
-        // If next char is different than current, increase the length.
+        // If next char is different than current or i + 1 reaches the end, 
+        // increase the length.
         if (i + 1 >= str.length() || str.charAt(i) != str.charAt(i + 1))  {
             // Character changed. 
             compressedLength += 1 + String.valueOf(countConsecutive).length();

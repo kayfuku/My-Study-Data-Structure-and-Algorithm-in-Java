@@ -151,14 +151,15 @@ public class Lab_whiteboard {
         
         // Add X at null node and do pre-order traversal
         // to get a string. 
-        getOrderString(t1, sb1);
-        getOrderString(t2, sb2);
+        getOrderString(t1, sb1); // O(N)
+        getOrderString(t2, sb2); // O(M)
         
         return sb1.indexOf(sb2.toString()) != -1;
     }
     // Pre-order traversal. Append X at null node. 
-    // I think it doesn't matter which kind of traversals you use, 
-    // pre-order, in-order, or post-order. 
+    // As long as we represent the NULL nodes as a special character, 
+    // the pre-order traversal of a tree is unique. 
+    // In-order traversal does not work. 
     private static void getOrderString(SimpleTreeNode node, StringBuilder sb) {
         if (node == null) {
             sb.append("X");
@@ -171,11 +172,12 @@ public class Lab_whiteboard {
     }
     
     
-    // Check if a tree contains another tree.
+    // Check if a tree contains another tree. Alternative approach. 
+    // Each time a node in t1 matches the root of t2, call matchTree. 
     // O(N + kM) average case runtime, where N and M are the numbers of nodes in t1 and t2, 
     // k is the number of occurrences of t2's root in t1. 
     // Worst case: O(MN)
-    // O(log N + log M) space.
+    // O(log N + log M) space. Less space needed. 
     public static boolean containsTree2(SimpleTreeNode t1, SimpleTreeNode t2) {
         if (t2 == null) { return true; }
         return subTree(t1, t2);
@@ -184,6 +186,8 @@ public class Lab_whiteboard {
         if (n1 == null) {
             return false;
         } else if (n1.data == n2.data && matchTree(n1, n2)) {
+            // There exists root node of t2 in t1. 
+            // Then, check to see if those trees are identical. 
             // The point is how matchTree() is called. 
             // If the trees are not identical, it needs to get back to search. 
             return true;
@@ -200,6 +204,7 @@ public class Lab_whiteboard {
         } else if (n1.data != n2.data) {
             return false;
         } else {
+            // n1.data == n2.data  
             return matchTree(n1.left, n2.left) && matchTree(n1.right, n2.right);
         }
     }

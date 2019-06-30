@@ -1,5 +1,5 @@
-// Convert a Hash Table to an array.
-// Author: Cracking the Coding Interview 11.2 p.337 + kei.
+// Map and List. Convert all the elements in the list to an array.
+// Author: CtCI 10.2 p.398 + kei.
 // Date  : February 13, 2016
 
 

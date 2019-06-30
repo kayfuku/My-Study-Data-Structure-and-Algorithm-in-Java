@@ -144,7 +144,8 @@ public class Bit01
     // Get value on i-th bit of num.
     // ex.    i: (MSB) 4 3 2 1 0 (LSB)
     //    value:       0 1 0 0 1 
-    public static int getBit(int num, int i) // O(1)
+    // O(1)
+    public static int getBit(int num, int i) 
     {
        return (((num & (1 << i)) != 0) ? 1 : 0);        
     	// If return boolean.

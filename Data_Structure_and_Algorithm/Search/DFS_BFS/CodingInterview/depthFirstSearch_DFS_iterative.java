@@ -1,10 +1,11 @@
+// This dfs code becomes bfs code if you replace the stack with a queue.
 // Depth First Search(DFS) iterative version.
 // Author: アルゴリズムを学ぼう p.96 + kei
 // Date  : September 22, 2016
 
 
 /**
- * Depth First Search. Search for goal node traversing from node v.
+ * Depth First Search iterative version. Search for goal node traversing from node v.
  */
 public boolean dfs(Graph g, Vertex start, Vertex goal) {
     Set<Vertex> visited = new HashSet<Vertex>();

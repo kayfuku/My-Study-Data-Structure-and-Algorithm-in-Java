@@ -1,3 +1,5 @@
+// (bfsCLRS() is better in DFS_BFS_2.java)
+// This bfs code becomes dfs code if you replace the queue with a stack. 
 // Breadth First Search(BFS).
 // Author: アルゴリズムを学ぼう p.97 + kei
 // Date  : September 22, 2016

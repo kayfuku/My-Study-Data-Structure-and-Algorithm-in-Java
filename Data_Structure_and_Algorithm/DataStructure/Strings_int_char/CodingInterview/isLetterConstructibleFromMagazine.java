@@ -2,26 +2,18 @@
 // Author: EPI 13.2 p.196 + kei
 // Date  : December 1, 2016
 
-package whiteboard;
-
 import java.util.HashMap;
-
 
 
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
 
-        
         String letter = "Hello, world.";
         String magazine = "AboHcdldfebao w,cuitolppqrl.";
         
         boolean b = isLetterConstructibleFromMagazine(letter, magazine);
         System.out.println(b); // true 
-        
-        
-        
-        
         
         
         System.out.println();
@@ -31,7 +23,7 @@ public class Lab_whiteboard {
     
     // O(m + n), where m and n are the number of characters in the letter and magazine. 
     public static boolean isLetterConstructibleFromMagazine(String letter, String magazine) {
-        // Count the number of characters in the letter. 
+        // Count the number of different characters in the letter. 
         HashMap<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < letter.length(); i++) {
             char c = letter.charAt(i);

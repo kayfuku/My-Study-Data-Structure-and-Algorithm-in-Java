@@ -1,3 +1,76 @@
+// charAt, indexOf, contains, and substring methods. 
+// Author: kei
+// Date  : January 17, 2019 
+
+// charAt()
+String text = "abc";
+System.out.println(text.charAt(0)); // a
+System.out.println(text.charAt(1)); // b
+System.out.println(text.charAt(2)); // c
+System.out.println(text.charAt(3)); // StringIndexOutOfBounds 
+
+// indexOf()
+String string = "abc";
+System.out.println(string.indexOf("a")); // 0
+System.out.println(string.indexOf("b")); // 1
+System.out.println(string.indexOf("c")); // 2
+System.out.println(string.indexOf("bc")); // 1
+System.out.println(string.indexOf("abc")); // 0
+System.out.println(string.indexOf("")); // 0
+
+// contains()
+String string = "ABCDE";
+String subString = "DE";
+System.out.println(string.contains(subString)); // true
+subString = "CE";
+System.out.println(string.contains(subString)); // false
+
+// substring()
+String text = "abc";
+System.out.println(text.substring(0));  // abc
+System.out.println(text.substring(2));  // c
+System.out.println(text.substring(3));  // 
+System.out.println(text.substring(3).equals(""));  // true
+System.out.println(text.substring(4));  // StringIndexOutOfBoundsException
+// substring(0, 0) returns empty string. 
+System.out.println("abc".substring(0, 0)); // ""
+
+String s = "abcdef";
+// Get the last 2 chars in a string.
+System.out.println(s.substring(s.length() - 2)); // ef
+// You can put "len" into end when using loop. 
+// But putting "len + 1" into end causes a out of bound exception.
+System.out.println(s.substring(s.length() - 2, s.length())); // ef
+
+// startsWith()
+String s = "a";
+System.out.println(s.startsWith("a")); // true
+s = "";
+System.out.println(s.startsWith("a")); // false
+s = "abc";
+System.out.println(s.startsWith("")); // true
+
+// new String() returns empty string. 
+System.out.println(new String());          // ""
+// new StringBuffer() returns empty string. 
+System.out.println(new StringBuffer());    // ""
+
+
+// String is immutable object. 
+// Author: kei
+// Date  : October 7, 2018 
+public static void main(String[] args) {
+    String string = "test";
+    concat(string);
+    System.out.println(string);  // test     
+}
+
+public static void concat(String string) {
+    string = string + "2";
+    System.out.println(string);
+}
+
+
 // Substring. 
 // Given a string, return a new string where "not " has been added to the front. However, if the string already begins with "not", return the string unchanged. Note: use .equals() to compare 2 strings.
 
@@ -151,8 +224,8 @@ public String startOz(String str) {
   }
   
   String strAns = "";
-  // Parallel if, not if-else because some strs are in both case.
-  // Avoid index out of bound. 
+  // Parallel if statements, not if-else statement because some strs are in both case.
+  // Put the checker to avoid index out of bound. 
   if (str.length() >= 1 && str.charAt(0) == 'o') {
     strAns += str.charAt(0);
   }
@@ -181,32 +254,7 @@ public String startOz(String str) {
 // }
 
 
-// substring()
-// substring(0, 0) returns empty string. 
-System.out.println("abc".substring(0, 0)); // ""
 
-String s = "abcdef";
-// Get the last 2 chars in a string.
-System.out.println(s.substring(s.length() - 2)); // ef
-// You can put "len" into end when using loop. 
-// But putting "len + 1" into end causes a disaster.
-System.out.println(s.substring(s.length() - 2, s.length())); // ef
-
-
-// startsWith()
-String s = "a";
-System.out.println(s.startsWith("a")); // true
-s = "";
-System.out.println(s.startsWith("a")); // false
-s = "abc";
-System.out.println(s.startsWith("")); // true
-
-
-
-// new String() returns empty string. 
-System.out.println(new String());          // ""
-// new StringBuffer() returns empty string. 
-System.out.println(new StringBuffer());    // ""
 
 
 // Given a non-empty string and an int N, return the string made starting with char 0, and then every Nth char of the string. So if N is 3, use char 0, 3, 6, ... and so on. N is 1 or more.
@@ -265,7 +313,8 @@ public String everyNth(String str, int n) {
 int countXX(String str) {
   int count = 0;
   // When writing condition clause, think about this.
-  // i should stop at the second to last char. 
+  // 'i' should stop at the second to last char. 
+  // substring's end index is ok to be str.length(). 
   for (int i = 0; i <= str.length() - 2; i++) {
     if (str.substring(i, i + 2).equals("xx")) {
       count++;
@@ -331,6 +380,7 @@ public String stringX(String str) {
   }
   
   StringBuffer sb = new StringBuffer();
+  // i < str.length() - 1, do it until second to last. 
   for (int i = 1; i < str.length() - 1; i++) {
     // Only append the char if it is not 'x'.
     if (str.charAt(i) != 'x') {

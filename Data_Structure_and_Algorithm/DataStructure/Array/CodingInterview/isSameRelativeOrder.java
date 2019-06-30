@@ -26,7 +26,6 @@ public class Lab_whiteboard {
         System.out.println(b); // false 
         
         
-        
         System.out.println();
         System.out.println("done.");
         return;

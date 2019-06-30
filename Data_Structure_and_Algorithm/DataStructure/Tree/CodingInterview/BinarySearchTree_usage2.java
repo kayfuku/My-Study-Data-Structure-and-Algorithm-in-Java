@@ -1,12 +1,15 @@
 // Example to use Binary Search Tree.
-// Warning! In eclipse, you need to open BinarySearchTree_usage 
+// Warning! In eclipse, you need to open BinarySearchTree_usage.java
 // for getting class SimpleTreeNode.
 // Author: kei
 
 package whiteboard;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class BinarySearchTree_usage2 {
 
@@ -14,7 +17,7 @@ public class BinarySearchTree_usage2 {
 	// for getting class SimpleTreeNode.
 
 	public static void main(String[] args) {
-		
+
 		SimpleBinarySearchTree2 bst = new SimpleBinarySearchTree2();
 
 		// Push data into BST.
@@ -23,64 +26,79 @@ public class BinarySearchTree_usage2 {
 		SimpleTreeNode bstNodeW = buildBinarySearchTreeW(bst);
 		// Push data into BST with parent link.
 		SimpleTreeNodeP bstNodeP = buildBinarySearchTreeP(bst);
-		
-		
 
-		// Test coverP(). 
-//		boolean b = coverP(bstNodeP, bst.mapP.get(4));
-//		System.out.println(b); // true
-//		b = coverP(bstNodeP, bst.mapP.get(14));
-//		System.out.println(b); // true
-//		b = coverP(bstNodeP, bst.mapP.get(6));
-//		System.out.println(b); // true
-//		b = coverP(bstNodeP, bst.mapP.get(8));
-//		System.out.println(b); // false
-		
+
+
+		// Test coverP(). (findFirstCommonAncestor.java)
+		//		boolean b = coverP(bstNodeP, bst.mapP.get(4));
+		//		System.out.println(b); // true
+		//		b = coverP(bstNodeP, bst.mapP.get(14));
+		//		System.out.println(b); // true
+		//		b = coverP(bstNodeP, bst.mapP.get(6));
+		//		System.out.println(b); // true
+		//		b = coverP(bstNodeP, bst.mapP.get(8));
+		//		System.out.println(b); // false
+
 		// Test address and parent.
-//		System.out.println(getAddressP(bst, 6).data); // 6
-//		System.out.println(getAddressP(bst, 1).parent.data); // 3
-//		System.out.println(getAddressP(bst, 6).parent); // null
+		//		System.out.println(getAddressP(bst, 6).data); // 6
+		//		System.out.println(getAddressP(bst, 1).parent.data); // 3
+		//		System.out.println(getAddressP(bst, 6).parent); // null
 
 		// Test getMin()
-//		int min = bst.getMin(bstNode);
-//		//System.out.println(min); // 1
-//		min = bst.getMin(bstNodeW);
-//		//System.out.println(min); // 1
-		
+		//		int min = bst.getMin(bstNode);
+		//		//System.out.println(min); // 1
+		//		min = bst.getMin(bstNodeW);
+		//		//System.out.println(min); // 1
+
 		// Test levelOrder()
-//		bst.levelOrder(bstNode, 14); // 6 3 12 1 4 9 14 Found. 
-//		bst.levelOrder(bstNode, 1); // 6 3 12 1 Found. 
-//		bst.levelOrder(bstNode, 0); // 6 3 12 1 4 9 14 Not found.
+		//		bst.levelOrder(bstNode, 14); // 6 3 12 1 4 9 14 Found. 
+		//		bst.levelOrder(bstNode, 1); // 6 3 12 1 Found. 
+		//		bst.levelOrder(bstNode, 0); // 6 3 12 1 4 9 14 Not found.
 
 		// Test levelOrder2()
 		bst.levelOrder2(bstNode, 14); // 6 3 12 1 4 9 14 Found. 
 		bst.levelOrder2(bstNode, 1); // 6 3 12 1 Found. 
 		bst.levelOrder2(bstNode, 0); // 6 3 12 1 4 9 14 Not found.
-		
+		System.out.println();
+
 		// Test preorderIter() 
-//		bst.preorderIter(bstNode); // 6 3 1 4 12 9 14 
-		
+		//		bst.preorderIter(bstNode); // 6 3 1 4 12 9 14 
+
 		// Test inorder2() 
 		//bst.inorder2(bstNode); // 1 3 4 6 9 12 14
 
 		// Test countNodes(), countN().
-//		int c = bst.countNodes(bstNode);
-//		System.out.println(c); // 7
-//		c = bst.countNodes(bstNodeW);
-//		System.out.println(c); // 3
-//		c = bst.countN(bstNode);
-//		System.out.println(c); // 7
-//		c = bst.countN(bstNodeW);
-//		System.out.println(c); // 3
+		//		int c = bst.countNodes(bstNode);
+		//		System.out.println(c); // 7
+		//		c = bst.countNodes(bstNodeW);
+		//		System.out.println(c); // 3
+		//		c = bst.countN(bstNode);
+		//		System.out.println(c); // 7
+		//		c = bst.countN(bstNodeW);
+		//		System.out.println(c); // 3
 
-		
-		
-		
-		
+		// Test levelOrderWithLevel()
+		System.out.println("levelOrderWithLevel(): ");
+		bst.levelOrderWithLevel(bstNode); 
+//		level: 1
+//		6
+//		level: 2
+//		3
+//		12
+//		level: 3
+//		1
+//		4
+//		9
+//		14
+
+
+
+
+
 		System.out.println();
 		System.out.println("done.");		
 	}
-	
+
 	// Build Binary Search Tree.
 	//
 	//                   6
@@ -103,10 +121,10 @@ public class BinarySearchTree_usage2 {
 		tNode = bst.insert(tNode, 14);
 		//tNode = bst.insert(tNode, 25);
 		//tNode = bst.insert(tNode, 39); // With all above, not balanced.
-		
+
 		return tNode;
 	}
-	
+
 	// Build Binary Search Tree such that each node has a link to its parent.
 	// Author: kei
 	// Date  : October 23, 2016
@@ -123,10 +141,10 @@ public class BinarySearchTree_usage2 {
 		tNodeP = bst.insertP(tNodeP, 14);
 		//tNodeP = bst.insertP(tNodeP, 25);
 		//tNodeP = bst.insertP(tNodeP, 39); // With all above, not balanced.
-		
+
 		return tNodeP;
 	}
-	
+
 	// Build Binary Search Tree.
 	//
 	//                   6
@@ -143,11 +161,11 @@ public class BinarySearchTree_usage2 {
 		tNode = bst.insert(tNode, 6);
 		tNode = bst.insert(tNode, 3);
 		tNode = bst.insert(tNode, 1);
-		
+
 		return tNode;
 	}
 
-	
+
 	// Get node address from node data.
 	// Author: kei
 	// Date  : October 23, 2016
@@ -157,25 +175,25 @@ public class BinarySearchTree_usage2 {
 	public static SimpleTreeNode getAddress(SimpleBinarySearchTree2 bst, int key) {
 		return bst.map.get(key);
 	}
-	
 
 
-	
-	
-	
-	
-	
+
+
+
+
+
+
 }
 
 class SimpleBinarySearchTree2 {
-	
+
 	// For getting tree node address. 
 	HashMap<Integer, SimpleTreeNode> map = new HashMap<Integer, SimpleTreeNode>();
 	HashMap<Integer, SimpleTreeNodeP> mapP = new HashMap<Integer, SimpleTreeNodeP>();
-	
+
 	public SimpleBinarySearchTree2() {
 	}
-	
+
 	// Insert. O(log N)
 	// Assume that left < mid <= right.
 	// Author: kei
@@ -187,7 +205,7 @@ class SimpleBinarySearchTree2 {
 			map.put(newData, tNode);
 			return tNode;			
 		}
-		
+
 		// Recurse.
 		if (newData < tNode.data) {
 			// Search left subtree.
@@ -200,7 +218,7 @@ class SimpleBinarySearchTree2 {
 			return tNode;
 		}
 	}
-	
+
 	// Insert nodes with link to their parent. O(log N)
 	// Assume that left < mid <= right.
 	// Author: kei
@@ -212,7 +230,7 @@ class SimpleBinarySearchTree2 {
 			mapP.put(newData, tNode);
 			return tNode;			
 		}
-		
+
 		// Recurse.
 		if (newData < tNode.data) {
 			// Search left subtree.
@@ -227,7 +245,7 @@ class SimpleBinarySearchTree2 {
 			return tNode;
 		}
 	}
-	
+
 	// In-order traversal. O(N)
 	// Author: CtCI 6th p.103 + kei
 	// Date  : September 24, 2016
@@ -239,7 +257,7 @@ class SimpleBinarySearchTree2 {
 			inorder(tNode.right);
 		}
 	}
-	
+
 	// In-order traversal. O(N)
 	// Author: PIE p.70 + kei
 	// Date  : October 31, 2016
@@ -262,36 +280,43 @@ class SimpleBinarySearchTree2 {
 			preorder(tNode.right);
 		}
 	}
-	
+
 	// Pre-order traversal. Iterative version. O(N)
 	// Author: PIE p.72 + kei
 	// Date  : October 31, 2016
 	public void preorderIter(SimpleTreeNode tNode/* , int key */) {
-	    LinkedList<SimpleTreeNode> stack = new LinkedList<SimpleTreeNode>();
+		if (tNode == null) {
+			return;
+		}
+		LinkedList<SimpleTreeNode> stack = new LinkedList<SimpleTreeNode>();
 
-	    stack.push(tNode);
+		stack.push(tNode);
 
-	    while (!stack.isEmpty()) {
-	        SimpleTreeNode node = stack.poll();
+		while (!stack.isEmpty()) {
+			SimpleTreeNode node = stack.poll();
 			System.out.println(node.data);
 
-//	        if (node.data == key) {
-//	            // Found.
-//				System.out.println("Found.");
-//	            return;
-//	        }
-	        
-	        // Add all the children of the node to stack.
-			// Note that right child is first, then left. 
-			if (node.right != null) { stack.push(node.right); }
-			if (node.left != null) { stack.push(node.left); } 
-	    } // end while (...)
+			//	        if (node.data == key) {
+			//	            // Found.
+			//				System.out.println("Found.");
+			//	            return;
+			//	        }
 
-//	    // Not found.
-//		System.out.println("Not found.");
-//	    return;		
+			// Add all the children of the node to stack.
+			// Note that right child is first, then left. 
+			if (node.right != null) { 
+				stack.push(node.right); 
+			}
+			if (node.left != null) { 
+				stack.push(node.left); 
+			} 
+		} // end while (...)
+
+		//	    // Not found.
+		//		System.out.println("Not found.");
+		//	    return;		
 	}
-	
+
 	// Post-order traversal. O(N)
 	// Author: CtCI 6th p.103 + kei
 	// Date  : September 24, 2016
@@ -303,40 +328,103 @@ class SimpleBinarySearchTree2 {
 			System.out.println(tNode.data);
 		}
 	}
-	
+
+	// 1. Level order traversal (BFS, Iterative). 
+	// O(N) time, O(N) space. 
+	// Author: kei
+	// Date  : June 28, 2019
+	public List<List<Integer>> levelOrderWithLevel(SimpleTreeNode root) {
+		List<List<Integer>> result = new ArrayList<>();
+		if (root == null) {
+			return result;
+		}
+
+		Queue<SimpleTreeNode> queue = new LinkedList<>();
+		queue.offer(root);
+		int level = 0; // level
+		while (!queue.isEmpty()) {
+			// For each level.
+			level++;
+			System.out.println("level: " + level);
+			List<Integer> valsL = new ArrayList<>();
+			int size = queue.size();
+			for (int i = 0; i < size; i++) {
+				SimpleTreeNode node = queue.poll();
+				System.out.println(node.data);
+				valsL.add(node.data);
+
+				if (node.left != null) {
+					queue.offer(node.left);
+				}
+				if (node.right != null) {
+					queue.offer(node.right);
+				}
+			}
+
+			result.add(valsL);
+		}
+
+		return result;
+	}
+
+	// 2. Level order traversal (DFS, Recursive).
+	// O(N) time, O(logN) (balanced) or O(N) (not balanced) space. 
+	// Author: kei + biedengle2 (LeetCode)
+    // Date  : June 20, 2019
+	public List<List<Integer>> levelOrderDfs(SimpleTreeNode root) {
+		List<List<Integer>> ret = new ArrayList<>();
+		if (root == null) {
+			return ret;
+		}
+		levelOrderDfsHelper(root, 0, ret);
+		return ret;
+	}
+	private void levelOrderDfsHelper(SimpleTreeNode node, int level, List<List<Integer>> ret) {
+		if (node == null) {
+			return;
+		}
+		if (ret.size() <= level) {
+			ret.add(new ArrayList<Integer>());
+		}
+		ret.get(level).add(node.data);
+
+		levelOrderDfsHelper(node.left, level + 1, ret);
+		levelOrderDfsHelper(node.right, level + 1, ret);
+	}
+
 	// Level-order traversal. (BFS) O(N)
 	// Author: kei
 	// Date  : October 31, 2016
 	public void levelOrder(SimpleTreeNode tNode, int key) {
 		// No need to store nodes that has been visited. 
-	    //Set<SimpleTreeNode> visited = new HashSet<SimpleTreeNode>();
-	    LinkedList<SimpleTreeNode> queue = new LinkedList<SimpleTreeNode>();
+		//Set<SimpleTreeNode> visited = new HashSet<SimpleTreeNode>();
+		LinkedList<SimpleTreeNode> queue = new LinkedList<SimpleTreeNode>();
 
-	    queue.add(tNode);
+		queue.add(tNode);
 
-	    while (!queue.isEmpty()) {
-	        SimpleTreeNode node = queue.poll();
+		while (!queue.isEmpty()) {
+			SimpleTreeNode node = queue.poll();
 			System.out.println(node.data);
 
 			// This if statement is not required
 			// if just traversal is needed. 
-	        if (node.data == key) {
-	            // Found.
+			if (node.data == key) {
+				// Found.
 				System.out.println("Found.");
 				return;
-	        }
+			}
 
-	        // Add all the children of the node to queue.
+			// Add all the children of the node to queue.
 			if (node.left != null) { queue.add(node.left); }
 			if (node.right != null) { queue.add(node.right); } 
-	    } // end while (...)
+		} // end while (...)
 
-	    // Not found.
-	    // If just traversal is needed, these two lines are not requisite. 
+		// Not found.
+		// If just traversal is needed, these two lines are not requisite. 
 		System.out.println("Not found.");
 		return;
 	}
-	
+
 	// Level-order traversal with level focused. (BFS) O(N)
 	// Author: CtCI 4.3 p.243 + kei
 	// Date  : December 8, 2016
@@ -345,22 +433,22 @@ class SimpleBinarySearchTree2 {
 		if (tNode != null) {
 			levelList.add(tNode);
 		}
-		
+
 		while (!levelList.isEmpty()) {
 			LinkedList<SimpleTreeNode> parents = levelList;
-			
+
 			levelList = new LinkedList<>();
 			for (SimpleTreeNode parent : parents) {
 				System.out.println(parent.data);
-				
+
 				// This if statement is not required
 				// if just traversal is needed. 
-		        if (parent.data == key) {
-		            // Found.
+				if (parent.data == key) {
+					// Found.
 					System.out.println("Found.");
 					return;
-		        }
-				
+				}
+
 				if (parent.left != null) {
 					levelList.add(parent.left);
 				}
@@ -369,10 +457,10 @@ class SimpleBinarySearchTree2 {
 				}				
 			}	
 		}
-		
+
 		System.out.println("Not found.");
 	}
-	
+
 	// Retrieve. O(log N)
 	// Assume that left < mid <= right.
 	// Author: JAVA p.617 + kei
@@ -382,7 +470,7 @@ class SimpleBinarySearchTree2 {
 			// Not found. 
 			return null;
 		}
-		
+
 		if (key == tNode.data) {
 			// Found.
 			return tNode.data;
@@ -395,7 +483,7 @@ class SimpleBinarySearchTree2 {
 			return retrieve(tNode.right, key);
 		}
 	}
-	
+
 	// Retrieve and return node. Iterative version. O(log N)
 	// Assume that left < mid <= right.
 	// Author: PIE p.64 + kei
@@ -411,10 +499,10 @@ class SimpleBinarySearchTree2 {
 				tNode = tNode.right;
 			}	
 		}
-		
+
 		return tNode;
 	}
-	
+
 	// Delete. O(log N)
 	// Author: JAVA p.618 + kei
 	// Date  : October 21, 2016
@@ -422,7 +510,7 @@ class SimpleBinarySearchTree2 {
 		if (tNode == null) {
 			return null;
 		}
-		
+
 		if (key == tNode.data) {
 			// Found. 
 			// deleteNode() returns a node substituted for the deleted node.
@@ -437,7 +525,7 @@ class SimpleBinarySearchTree2 {
 			// Note that tNode.right gets the return.
 			tNode.right = delete(tNode.right, key);
 		}
-		
+
 		return tNode;
 	}
 	// Return a node substituted for the node to be deleted.
@@ -446,13 +534,13 @@ class SimpleBinarySearchTree2 {
 			// No child.
 			return null;
 		} else if (targetNode.left == null) {
-		    // No left child.
+			// No left child.
 			return targetNode.right;
 		} else if (targetNode.right == null) {
-		    // No right child.
+			// No right child.
 			return targetNode.left;
 		} else {
-		    // There are two children.
+			// There are two children.
 			// Retrieve the in-order successor data.
 			int replacementData = findLeftmost(targetNode.right);
 			// Write over the target node data.
@@ -467,7 +555,7 @@ class SimpleBinarySearchTree2 {
 		if (tNode.left == null) {
 			return tNode.data;
 		}
-		
+
 		return findLeftmost(tNode.left);
 	}
 	// Delete leftmost node.
@@ -480,7 +568,7 @@ class SimpleBinarySearchTree2 {
 		tNode.left = deleteLeftmost(tNode.left);
 		return tNode;		
 	}
-	
+
 	// Get minimum in BST. O(log N)
 	// Author: kei
 	// Date  : October 31, 2016
@@ -488,14 +576,14 @@ class SimpleBinarySearchTree2 {
 		if (tNode == null) {
 			throw new RuntimeException("Empty tree.");
 		}
-		
+
 		while (tNode.left != null) {
 			tNode = tNode.left;
 		}
-		
+
 		return tNode.data;
 	}
-	
+
 	// Count the number of nodes in BT. O(N)
 	// Author: kei
 	// Date  : November 1, 2016
@@ -505,10 +593,10 @@ class SimpleBinarySearchTree2 {
 	}
 	private int countNodes(SimpleTreeNode tNode, int count) {
 		if (tNode == null) { return 0; }
-		
+
 		count = countNodes(tNode.left, count)
 				+ countNodes(tNode.right, count);
-		
+
 		return count + 1;
 	}
 	// Alternate to count the number of nodes in BT. O(N)
@@ -519,16 +607,16 @@ class SimpleBinarySearchTree2 {
 
 		return countNodes(tNode.left) + countNodes(tNode.right) + 1;		
 	}
-		
 
-	
-	
-	
-	
-	
 
-	
-	
+
+
+
+
+
+
+
+
 }
 
 // You might want to mention that the fields should be private and
@@ -539,16 +627,16 @@ class SimpleTreeNodeP {
 	SimpleTreeNodeP left;
 	SimpleTreeNodeP right;
 	SimpleTreeNodeP parent;
-	
+
 	public SimpleTreeNodeP() {
 	}
-	
+
 	public SimpleTreeNodeP(int data) {
 		this.data = data;
 		left = null;
 		right = null;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.valueOf(data);

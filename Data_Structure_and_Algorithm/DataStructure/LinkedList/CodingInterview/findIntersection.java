@@ -1,6 +1,8 @@
 // Find intersection.
-// This can be used in Tree problems.
-// Author: CtCI 6th 2.7 p.222 + kei
+// This can be used in Tree problems. 
+// Much better solution is available. 
+// Take a look at leetcode/IntersectionOfTwoLinkedLists.java
+// Author: CtCI 2.7 p.222 + kei
 // Date  : October 23, 2016
 
 ListNode findIntersection(ListNode list1, ListNode list2) {
@@ -50,13 +52,20 @@ class Result {
 
 // Get tail node and list size.
 Result getTailAndSize(ListNode node) {
+    if (node == null) {
+        return null;
+    }
+
     int size = 1;
+    // If the node.next is not null, then there should be one more node. 
     while (node.next != null) {
+        // So, increment the size. 
         size++;
         node = node.next;
     }
 
-    // node does not refer to tail node.
+    // This can also be good for just getting the size, but 
+    // 'node' does not refer to tail node after the loop. 
     // int size = 0;
     // while (node != null) {
     //     size++;

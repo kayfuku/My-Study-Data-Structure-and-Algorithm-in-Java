@@ -1,4 +1,4 @@
-// Binary Heap.
+// Binary Heap. (Min Heap)
 // Author: アルゴリズムを学ぼう p.83 + kei
 // Date  : September 21, 2016
 
@@ -26,7 +26,7 @@ public class Heap {
         // Second, rebuild the heap.
         // Repeat until root.
         while (p > 0) {
-            if (values[p] <= values[(p - 1) / 2]) {
+            if (values[p] >= values[(p - 1) / 2]) {
                 // Parent is smaller than or equal to the inserted node.
                 break;
             }

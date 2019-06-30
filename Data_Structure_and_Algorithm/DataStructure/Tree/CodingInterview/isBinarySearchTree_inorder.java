@@ -1,7 +1,7 @@
-// Check if a tree is Binary Search Tree.
-// In-order traversal version. 
+// Check if a tree is Binary Search Tree. In-order traversal version. 
+// This is valid only if there is no duplicates in the tree. 
 // Time Complexity: O(n), Space Complexity: O(log n) if balanced.
-// Author: Cracking Coding Interview 6th p.246 + kei.
+// Author: CtCI 4.5 p.246 + kei.
 // Date  : September 25, 2016
 
 Integer lastPrinted = null;
@@ -31,12 +31,11 @@ boolean isBinarySearchTree(SimpleTreeNode n) {
 }
 
 
-// Check if a tree is Binary Search Tree.
-// In-order traversal version. 
+// Check if a tree is Binary Search Tree. In-order traversal version. 
+// This is valid only if there is no duplicates in the tree. 
 // Time Complexity: O(n), Space Complexity: O(log n) if balanced.
 // Author: Cracking Coding Interview p.221 + kei.
 // Date  : February 11, 2016
-
 
 public static int lastVisited = Integer.MIN_VALUE;
 

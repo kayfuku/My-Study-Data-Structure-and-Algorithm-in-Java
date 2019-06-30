@@ -1,13 +1,12 @@
 // Check if a binary tree is balanced.
-
+// Author: CtCI 4.4 p.245 + kei.
+// Date  : September 25, 2016
 
 // Get the height at each node and
 // If the subtree is not balanced, return Integer.MIN_VALUE 
 // to break the recursion immediately.
-// Author: Cracking Coding Interview 6th 4.4 p.245 + kei.
-// Date  : September 25, 2016
-public static int checkHeight(TreeNode root) {
-    if (root == null) {
+public static int checkHeight(TreeNode node) {
+    if (node == null) {
         // Reason why -1 is because the height becomes 0 
         // when one node added.
         return -1;
@@ -16,7 +15,7 @@ public static int checkHeight(TreeNode root) {
     // Check if the left subtree is balanced.
     // If it is not balanced, we do not need to check 
     // the right subtree. 
-    int leftHeight = checkHeight(root.left);
+    int leftHeight = checkHeight(node.left);
     if (leftHeight == Integer.MIN_VALUE) {
         // Left subtree is not balanced.
         // So no need to check right subtree.
@@ -24,7 +23,7 @@ public static int checkHeight(TreeNode root) {
     }
 
     // Check if the right subtree is balanced.
-    int rightHeight = checkHeight(root.right);
+    int rightHeight = checkHeight(node.right);
     if (rightHeight == Integer.MIN_VALUE) {
         // Right subtree is not balanced.
         return Integer.MIN_VALUE;
@@ -43,10 +42,12 @@ public static int checkHeight(TreeNode root) {
 public static boolean isBalancedBinaryTree(TreeNode root) {
     if (checkHeight(root) == Integer.MIN_VALUE) {
         return false;
-    } else {
-        return true;
-    }
+    } 
+    
+    return true;
 }
+
+
 
 
 

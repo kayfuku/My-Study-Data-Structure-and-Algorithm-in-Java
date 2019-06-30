@@ -1,9 +1,6 @@
 // Check if a string has all unique chars.
 
-package whiteboard;
-
 import java.util.HashSet;
-
 
 
 public class Lab_whiteboard {
@@ -23,8 +20,6 @@ public class Lab_whiteboard {
         System.out.println(hasUniqueChars4(string2)); // false 
         
         
-        
-        
         System.out.println();
         System.out.println("done.");
         return;
@@ -39,11 +34,12 @@ public class Lab_whiteboard {
         int checker = 0;
         for (int i = 0; i < s.length(); i++) {
             int val = s.charAt(i) - 'a';
-            // Not '== 1'!
-            // 0010 & 0010 --> 0010 != 1
+            // Not '== 1'! But '> 0'
+            // because 1010 & 0010 --> 0010 != 1
             if ((checker & (1 << val)) > 0) {
                 return false;
             }
+            // 0000 | 0010 --> 0010
             checker |= (1 << val);          
         }
         

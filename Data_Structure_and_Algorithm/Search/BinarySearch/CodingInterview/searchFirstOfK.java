@@ -8,12 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class Lab_whiteboard {
 
     public static void main(String[] args) {
 
-        
         Integer[] nums = new Integer[]{ -14, -10, 2, 108, 108, 243, 285, 285, 285, 401 };
         ArrayList<Integer> alist = new ArrayList<>(Arrays.asList(nums));
         
@@ -23,25 +21,20 @@ public class Lab_whiteboard {
         
         
         
-        
-        
-        
-        
-        
         System.out.println();
         System.out.println("done.");
         return;
     } // end main().
     
     
-
     public static int searchFirstOfK(List<Integer> alist, int k) {
         int left = 0, right = alist.size() - 1, result = -1, mid;
-        
         
         while (left <= right) {
             mid = left + (right - left) / 2;
             if (k == alist.get(mid)) {
+                // We cannot return immediately here because 
+                // there might be the duplicate values to the left of 'mid'.
                 result = mid;
                 // Nothing to the right of mid can be 
                 // the first occurrence of k. 

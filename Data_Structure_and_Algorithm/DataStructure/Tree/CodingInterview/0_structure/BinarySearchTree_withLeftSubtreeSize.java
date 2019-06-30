@@ -41,8 +41,6 @@ public class ForCopy {
 		System.out.println(count); // 6
 		
 		
-		
-		
 		System.out.println();
 		root = null;
 		array = new int[]{ 10, 4, 15, 1, 6, 0, 12, 20, 12 };
@@ -83,14 +81,12 @@ public class ForCopy {
 		}
 	}
 	
+
 	public static int countNodesLessThan(int d) {
 		return root.countNodesLessThan(d);
 	}
 	
-	
-	
-	
-	
+
 	// For test. 
 	public static void inorder(BSTNodeWithLeftSize n) {
 		if (n == null) {
@@ -139,7 +135,7 @@ class BSTNodeWithLeftSize {
 	} // end insert()
 	
 	// Count the number of nodes that are less than 
-	// or equal to x (not including x itself). O(log N) 
+	// or equal to d (not including the first node that has d data). O(log N) 
 	public int countNodesLessThan(int d) {
 		if (d == data) {
 			return leftSize;
@@ -157,7 +153,7 @@ class BSTNodeWithLeftSize {
 				return -1;
 			} else {
 				return leftSize
-						+ 1 
+						+ 1 // this node.
 						+ right.countNodesLessThan(d);
 			}				
 		}

@@ -1,6 +1,6 @@
 // Find middle node/the beginning node of the second half 
 // when you don't know the size of the list. (Runner technique)
-// Author: CtCI 6th p.218 + kei
+// Author: CtCI 2.6 p.218 + kei
 // Date  : October 19, 2016
 public static int findMiddleNode(SLLNode<Integer> head) {
     SLLNode<Integer> fast = head;
